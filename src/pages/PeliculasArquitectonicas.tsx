@@ -6,7 +6,7 @@ import {
   Briefcase, Store, Stethoscope, Layers, CheckCircle2, ChevronDown,
   MessageCircle, Award, Ruler, FileText,
   CalendarCheck, ShieldCheck, Zap, Palette, MonitorSmartphone, PaintBucket,
-  Droplets, CloudRain, Wind, Users, Quote,
+  Droplets, CloudRain, Wind, Users, Quote, MapPin,
 } from "lucide-react";
 import tintMasOscuro from "@/assets/tint-mas-oscuro.jpg.asset.json";
 import tintEquilibrio from "@/assets/tint-equilibrio.jpg.asset.json";
@@ -122,6 +122,7 @@ export default function PeliculasArquitectonicas() {
       <Experience />
       <Coverage />
       <Wholesale />
+      <Distribucion />
       <Offer />
       <Faq />
       <FinalCta />
@@ -796,7 +797,134 @@ function Wholesale() {
   );
 }
 
-/* ---------------- 12. Offer ---------------- */
+/* ---------- 11b. Distribución ---------- */
+const DISTRIBUCION = [
+  {
+    region: "BOGOTÁ",
+    points: [
+      {
+        nombre: "SEDE PRINCIPAL DE DISTRIBUCIÓN",
+        direccion: "Cl. 185 #56 - 14",
+        maps: "https://www.google.com/maps/search/?api=1&query=Cl+185+56-14+Bogot%C3%A1",
+        contactos: [
+          { label: "CONTACTO DIRECCIÓN 2", numero: "3132023631", wa: "https://wa.link/04nhvs" },
+          { label: "CONTACTO", numero: "3184487807", wa: "https://wa.link/34hhy4" },
+        ],
+      },
+      {
+        nombre: "PUERTO NORTE",
+        contactos: [
+          { label: "CONTACTO", numero: "3114040755", wa: "https://wa.link/8hqecw" },
+        ],
+      },
+      {
+        nombre: "PRADO VERANIEGO",
+        direccion: "Cra 45b #140-44",
+        maps: "https://www.google.com/maps/search/?api=1&query=Cra+45b+140-44+Bogot%C3%A1",
+        contactos: [
+          { label: "CONTACTO", numero: "3173471726", wa: "https://wa.link/hlgvyq" },
+        ],
+      },
+      {
+        nombre: "DIRECCIÓN 3 (SUR DE BOGOTÁ)",
+        direccion: "Cra 39a 9 55 sur",
+        maps: "https://www.google.com/maps/search/?api=1&query=Cra+39a+9+55+sur+Bogot%C3%A1",
+        contactos: [
+          { label: "CONTACTO SUR DE BOGOTÁ", numero: "3013875499", wa: "https://wa.link/mrowqx" },
+        ],
+      },
+    ],
+  },
+  {
+    region: "ANTIOQUIA & META",
+    points: [
+      {
+        nombre: "ANTIOQUIA — PUNTO DE DISTRIBUCIÓN",
+        contactos: [
+          { label: "CONTACTO", numero: "3126649953", wa: "https://wa.link/z3ghdj" },
+        ],
+      },
+      {
+        nombre: "META — PUNTO DE DISTRIBUCIÓN",
+        contactos: [
+          { label: "CONTACTO", numero: "3013875499", wa: "https://wa.link/hap0bu" },
+        ],
+      },
+    ],
+  },
+];
+
+function Distribucion() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[oklch(0.11_0.012_50)] to-[var(--ink)]">
+      <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+        <Reveal className="text-center max-w-2xl mx-auto mb-12">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.14_85/0.3)] bg-[oklch(0.82_0.14_85/0.08)] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--gold-soft)]">
+            Distribución
+          </span>
+          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold">
+            PUNTOS DE <span className="text-gradient-gold">DISTRIBUCIÓN</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Encuentra tu sede más cercana y contáctanos directo por WhatsApp.
+          </p>
+        </Reveal>
+
+        {DISTRIBUCION.map((region) => (
+          <Reveal key={region.region} className="mb-10">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px flex-1 bg-gradient-to-r from-[oklch(0.82_0.14_85/0.4)] to-transparent" />
+              <h3 className="text-xl md:text-2xl font-bold text-[var(--gold)] uppercase tracking-wider">
+                {region.region}
+              </h3>
+              <span className="h-px flex-1 bg-gradient-to-l from-[oklch(0.82_0.14_85/0.4)] to-transparent" />
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {region.points.map((p) => (
+                <div key={p.nombre} className="rounded-3xl border border-[oklch(0.82_0.14_85/0.18)] bg-[oklch(0.13_0.012_50/0.6)] p-6 md:p-8 backdrop-blur-xl">
+                  <div className="flex items-center gap-3">
+                    <div className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-[var(--gradient-gold)] text-[var(--ink)] shadow-lg shrink-0">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <h4 className="text-base md:text-lg font-bold">{p.nombre}</h4>
+                  </div>
+                  <ul className="mt-4 space-y-3">
+                    {p.direccion && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                        <span className="text-foreground/90">
+                          <span className="font-semibold">DIRECCIÓN: </span>
+                          {p.maps ? (
+                            <a href={p.maps} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors">
+                              {p.direccion}
+                            </a>
+                          ) : (
+                            p.direccion
+                          )}
+                        </span>
+                      </li>
+                    )}
+                    {p.contactos.map((c, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                        <span className="text-foreground/90">
+                          {c.label && <span className="font-semibold">{c.label}: </span>}
+                          <a href={c.wa} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors">
+                            {c.numero}
+                          </a>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
 function Offer() {
   const items = [
     { i: MessageCircle, t: "Asesoría personalizada gratuita" },
