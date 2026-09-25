@@ -762,7 +762,7 @@ function Wholesale() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[var(--ink)] to-[oklch(0.11_0.012_50)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.82_0.14_85/0.10),transparent_60%)]" />
-      <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+      <div className="relative mx-auto max-w-6xl px-4 pt-20 md:pt-28 pb-8 md:pb-10">
         <Reveal>
           <div className="rounded-3xl border border-[oklch(0.82_0.14_85/0.25)] bg-[oklch(0.13_0.012_50/0.6)] p-8 md:p-14 backdrop-blur-xl">
             <div className="text-center">
