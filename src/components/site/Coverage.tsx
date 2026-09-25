@@ -46,7 +46,7 @@ export default function Coverage() {
                 <li className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-gold flex-shrink-0" />
                   <span className="text-foreground/90">
-                    <span className="font-semibold">DIRECCIÓN SEDE PRINCIPAL: </span>
+                    <span className="font-semibold">DIRECCIÓN SEDE PRINCIPAL BOGOTÁ: </span>
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=carrera+16c+161-50+Bogot%C3%A1"
                       target="_blank"
