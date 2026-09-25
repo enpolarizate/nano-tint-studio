@@ -6,7 +6,7 @@ import {
   Briefcase, Store, Stethoscope, Layers, CheckCircle2, ChevronDown,
   MessageCircle, Award, Ruler, FileText,
   CalendarCheck, ShieldCheck, Zap, Palette, MonitorSmartphone, PaintBucket,
-  Droplets, CloudRain, Wind, Users, Quote,
+  Droplets, CloudRain, Wind, Users, Quote, MapPin,
 } from "lucide-react";
 import tintMasOscuro from "@/assets/tint-mas-oscuro.jpg.asset.json";
 import tintEquilibrio from "@/assets/tint-equilibrio.jpg.asset.json";
