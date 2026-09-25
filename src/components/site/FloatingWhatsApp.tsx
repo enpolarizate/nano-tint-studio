@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
-export const WHATSAPP_URL = "https://wa.link/yjf1m1";
+export const WHATSAPP_URL = "https://wa.link/nppfvy";
 
 export default function FloatingWhatsApp() {
   return (
