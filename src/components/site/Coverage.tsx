@@ -2,6 +2,67 @@ import { Home, MapPin, ArrowRight, Check } from "lucide-react";
 import { Reveal } from "./motion";
 import { WHATSAPP_URL } from "./FloatingWhatsApp";
 
+const DISTRIBUCION = [
+  {
+    region: "BOGOTÁ",
+    points: [
+      {
+        nombre: "SEDE PRINCIPAL DE DISTRIBUCIÓN",
+        direccion: "Cl. 185 #56 - 14",
+        maps: "https://www.google.com/maps/search/?api=1&query=Cl+185+56-14+Bogot%C3%A1",
+        contactos: [
+          { label: "CONTACTO DIRECCIÓN 2", numero: "3132023631", wa: "https://wa.link/04nhvs" },
+          { label: "CONTACTO", numero: "3184487807", wa: "https://wa.link/34hhy4" },
+        ],
+      },
+      {
+        nombre: "PUERTO NORTE",
+        contactos: [
+          { label: "CONTACTO", numero: "3114040755", wa: "https://wa.link/8hqecw" },
+        ],
+      },
+      {
+        nombre: "PRADO VERANIEGO",
+        direccion: "Cra 45b #140-44",
+        maps: "https://www.google.com/maps/search/?api=1&query=Cra+45b+140-44+Bogot%C3%A1",
+        contactos: [
+          { label: "CONTACTO", numero: "3173471726", wa: "https://wa.link/hlgvyq" },
+        ],
+      },
+      {
+        nombre: "DIRECCIÓN 3 (SUR DE BOGOTÁ)",
+        direccion: "Cra 39a 9 55 sur",
+        maps: "https://www.google.com/maps/search/?api=1&query=Cra+39a+9+55+sur+Bogot%C3%A1",
+        contactos: [
+          { label: "CONTACTO SUR DE BOGOTÁ", numero: "3013875499", wa: "https://wa.link/mrowqx" },
+        ],
+      },
+    ],
+  },
+  {
+    region: "ANTIOQUIA",
+    points: [
+      {
+        nombre: "PUNTO DE DISTRIBUCIÓN",
+        contactos: [
+          { label: "CONTACTO", numero: "3126649953", wa: "https://wa.link/z3ghdj" },
+        ],
+      },
+    ],
+  },
+  {
+    region: "META",
+    points: [
+      {
+        nombre: "PUNTO DE DISTRIBUCIÓN",
+        contactos: [
+          { label: "CONTACTO", numero: "3013875499", wa: "https://wa.link/hap0bu" },
+        ],
+      },
+    ],
+  },
+];
+
 export default function Coverage() {
   return (
     <section className="relative section-padding bg-surface-2">
