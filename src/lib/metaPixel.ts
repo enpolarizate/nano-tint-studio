@@ -5,6 +5,9 @@
  */
 
 export const META_PIXEL_ID = "1611555850751773";
+/** Segundo píxel: SOLO se activa en la página de películas arquitectónicas. */
+export const ARCH_PIXEL_ID = "1460815986109014";
+export const ARCH_PIXEL_PATH = "/peliculas-arquitectonicas";
 export const CONSENT_KEY = "cookieConsent";
 export const CONSENT_CHANGED_EVENT = "cookie-consent-changed";
 export const OPEN_SETTINGS_EVENT = "open-cookie-settings";
@@ -56,13 +59,30 @@ function loadPixelScript() {
   }
 }
 
+const initedPixels = new Set<string>();
+
+function isArchPage() {
+  return window.location.pathname.startsWith(ARCH_PIXEL_PATH);
+}
+
 function activatePixel() {
   loadPixelScript();
   const fbq = window.fbq;
   if (!fbq) return;
   fbq("consent", "grant");
-  fbq("init", META_PIXEL_ID);
-  fbq("track", "PageView");
+
+  if (!initedPixels.has(META_PIXEL_ID)) {
+    initedPixels.add(META_PIXEL_ID);
+    fbq("init", META_PIXEL_ID);
+    fbq("trackSingle", META_PIXEL_ID, "PageView");
+  }
+
+  // Píxel exclusivo de la página de películas arquitectónicas
+  if (isArchPage() && !initedPixels.has(ARCH_PIXEL_ID)) {
+    initedPixels.add(ARCH_PIXEL_ID);
+    fbq("init", ARCH_PIXEL_ID);
+    fbq("trackSingle", ARCH_PIXEL_ID, "PageView");
+  }
 }
 
 function deactivatePixel() {
@@ -97,7 +117,9 @@ export function initMetaPixel() {
       const href = anchor.getAttribute("href") || "";
       if (/wa\.link|wa\.me|api\.whatsapp\.com|whatsapp/i.test(href)) {
         if (readConsent() === "accepted" && window.fbq) {
-          window.fbq("track", "Contact");
+          for (const id of initedPixels) {
+            window.fbq("trackSingle", id, "Contact");
+          }
         }
       }
     },
