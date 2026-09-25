@@ -176,7 +176,7 @@ function Hero() {
 
         <Reveal delay={100} className="w-full">
           <h1 className="mx-auto mt-5 max-w-5xl text-center text-2xl font-extrabold leading-[1.15] md:text-3xl lg:text-4xl">
-            Descubre cómo una <span className="text-gradient-gold">película de seguridad en los cristales de tu inmueble</span> reduce el calor, mejora la privacidad y protege tu espacio.
+            Protege tus inmuebles con <span className="text-gradient-gold">Películas Arquitectónicas</span> en tus cristales reduciendo calor, mejorando la privacidad y manteniendo luz interna.
           </h1>
         </Reveal>
 
