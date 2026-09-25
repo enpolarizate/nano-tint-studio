@@ -40,21 +40,16 @@ const DISTRIBUCION = [
     ],
   },
   {
-    region: "ANTIOQUIA",
+    region: "ANTIOQUIA & META",
     points: [
       {
-        nombre: "PUNTO DE DISTRIBUCIÓN",
+        nombre: "ANTIOQUIA — PUNTO DE DISTRIBUCIÓN",
         contactos: [
           { label: "CONTACTO", numero: "3126649953", wa: "https://wa.link/z3ghdj" },
         ],
       },
-    ],
-  },
-  {
-    region: "META",
-    points: [
       {
-        nombre: "PUNTO DE DISTRIBUCIÓN",
+        nombre: "META — PUNTO DE DISTRIBUCIÓN",
         contactos: [
           { label: "CONTACTO", numero: "3013875499", wa: "https://wa.link/hap0bu" },
         ],
