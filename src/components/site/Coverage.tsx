@@ -41,33 +41,39 @@ export default function Coverage() {
               <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-gradient-to-br from-gold to-gold-light text-[hsl(var(--gold-foreground))] shadow-[var(--shadow-gold)]">
                 <MapPin className="h-6 w-6" />
               </div>
-              <h3 className="mt-5 font-display text-xl md:text-2xl font-bold">📍 PUNTOS DE INSTALACIÓN</h3>
+              <h3 className="mt-5 font-display text-xl md:text-2xl font-bold">📍 PUNTO DE INSTALACIÓN PRINCIPAL</h3>
               <ul className="mt-6 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-gold flex-shrink-0" />
-                  <a
-                    href="https://www.google.com/maps/place/Stilos+Security+Films+Colombia,+Cl.+185+%2356+-+14,+Bogot%C3%A1/@4.7655456,-74.0516357,17z/data=!4m14!1m7!3m6!1s0x8e3f859531263143:0x88150f4e5c6831e7!2sCl.+185+%2356+-+14,+Bogot%C3%A1!8m2!3d4.7655392!4d-74.0516286!16s%2Fg%2F11j3nbzgjk!3m5!1s0x8e3f85edf43173ed:0x6d90ee07236ab04!8m2!3d4.7655456!4d-74.0516357!16s%2Fg%2F11p_7dwb6c?g_ep=Eg1tbF8yMDI2MDUxM18wIOC7DCoASAJQAg%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/90 underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold transition-colors"
-                  >
-                    Cl. 185 #56 - 14 (cerca a Centro Comercial Santa Fe)
-                  </a>
+                  <span className="text-foreground/90">
+                    <span className="font-semibold">DIRECCIÓN SEDE PRINCIPAL: </span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=carrera+16c+161-50+Bogot%C3%A1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold transition-colors"
+                    >
+                      carrera 16 c # 161-50
+                    </a>
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 h-2 w-2 rounded-full bg-gold flex-shrink-0" />
-                  <a
-                    href="https://www.google.com/maps/place/Centro+Comercial+Puerto+Norte,+01,+Cl.+195+%2321,+Bogot%C3%A1/@4.7727275,-74.0416167,17z/data=!4m6!3m5!1s0x8e3f85f1d7008983:0x959769c8b47236c2!8m2!3d4.7727275!4d-74.0416167!16s%2Fg%2F1pv5xz0jn?g_ep=Eg1tbF8yMDI2MDUxM18wIOC7DCoASAJQAg%3D%3D"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/90 underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold transition-colors"
-                  >
-                    Puerto Norte – entrada 4, local 79
-                  </a>
+                  <span className="text-foreground/90">
+                    <span className="font-semibold">CONTACTO SEDE PRINCIPAL: </span>
+                    <a
+                      href={WHATSAPP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold transition-colors"
+                    >
+                      3115589646
+                    </a>
+                  </span>
                 </li>
               </ul>
               <p className="mt-6 text-sm text-muted-foreground italic">
-                Elige si lo quieres a domicilio o en punto físico.
+                Elige si lo quiere a domicilio o en punto fisico.
               </p>
             </div>
           </Reveal>
