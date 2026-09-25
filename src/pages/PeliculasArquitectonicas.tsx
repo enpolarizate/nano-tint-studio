@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { applyConsentToPixel } from "@/lib/metaPixel";
 import {
   Sun, Shield, Eye, Snowflake, Sparkles, Building2, Home, Hotel,
   Briefcase, Store, Stethoscope, Layers, CheckCircle2, ChevronDown,
@@ -103,6 +104,8 @@ export default function PeliculasArquitectonicas() {
   useEffect(() => {
     const prevTitle = document.title;
     document.title = "ENPOLARÍZATE — Películas de seguridad y control solar premium";
+    // Activa el píxel exclusivo de esta página si el visitante ya aceptó cookies
+    applyConsentToPixel();
     return () => { document.title = prevTitle; };
   }, []);
   return (
