@@ -41,7 +41,7 @@ import covMeasures from "@/assets/coverage-measures.jpg";
 import covQuote from "@/assets/coverage-quote.jpg";
 import covInstall from "@/assets/coverage-install.jpg";
 
-const WHATSAPP_URL = "https://wa.link/yjf1m1";
+const WHATSAPP_URL = "https://wa.link/xak722";
 const WA_DEFAULT = WHATSAPP_URL;
 const WA_WHOLESALE = WHATSAPP_URL;
 
