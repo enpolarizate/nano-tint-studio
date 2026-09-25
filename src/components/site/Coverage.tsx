@@ -79,6 +79,78 @@ export default function Coverage() {
           </Reveal>
         </div>
 
+        <Reveal className="text-center max-w-2xl mx-auto mt-16 mb-10">
+          <span className="eyebrow">Distribución</span>
+          <h2 className="mt-4 font-display text-3xl md:text-5xl font-extrabold tracking-tight">
+            PUNTOS DE <span className="text-gold">DISTRIBUCIÓN</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Encuentra tu sede más cercana y contáctanos directo por WhatsApp.
+          </p>
+        </Reveal>
+
+        {DISTRIBUCION.map((region) => (
+          <Reveal key={region.region} className="mb-10">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent" />
+              <h3 className="font-display text-xl md:text-2xl font-bold text-gold uppercase tracking-wider">
+                {region.region}
+              </h3>
+              <span className="h-px flex-1 bg-gradient-to-l from-gold/40 to-transparent" />
+            </div>
+            <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+              {region.points.map((p) => (
+                <div key={p.nombre} className="premium-card p-6 md:p-8 h-full">
+                  <div className="flex items-center gap-3">
+                    <div className="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-gradient-to-br from-gold to-gold-light text-[hsl(var(--gold-foreground))] shadow-[var(--shadow-gold)] flex-shrink-0">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <h4 className="font-display text-base md:text-lg font-bold">{p.nombre}</h4>
+                  </div>
+                  <ul className="mt-4 space-y-3">
+                    {p.direccion && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-1.5 h-2 w-2 rounded-full bg-gold flex-shrink-0" />
+                        <span className="text-foreground/90">
+                          <span className="font-semibold">DIRECCIÓN: </span>
+                          {p.maps ? (
+                            <a
+                              href={p.maps}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold transition-colors"
+                            >
+                              {p.direccion}
+                            </a>
+                          ) : (
+                            p.direccion
+                          )}
+                        </span>
+                      </li>
+                    )}
+                    {p.contactos.map((c, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-2 w-2 rounded-full bg-gold flex-shrink-0" />
+                        <span className="text-foreground/90">
+                          {c.label && <span className="font-semibold">{c.label}: </span>}
+                          <a
+                            href={c.wa}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline underline-offset-4 decoration-gold/60 hover:decoration-gold hover:text-gold transition-colors"
+                          >
+                            {c.numero}
+                          </a>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        ))}
+
         <Reveal className="mt-14 text-center">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-gold">
             Cotizar mi Polarizado! <ArrowRight className="h-5 w-5" />
