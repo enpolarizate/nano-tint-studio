@@ -176,7 +176,7 @@ function Hero() {
 
         <Reveal delay={100} className="w-full">
           <h1 className="mx-auto mt-5 max-w-5xl text-center text-2xl font-extrabold leading-[1.15] md:text-3xl lg:text-4xl">
-            Protege tus inmuebles con <span className="text-gradient-gold">Películas Arquitectónicas</span> en tus cristales reduciendo calor, mejorando la privacidad y manteniendo luz interna.
+            Protege tus inmuebles con <span className="text-gradient-gold">Películas Arquitectónicas</span> en tus cristales <span className="text-gradient-gold">reduciendo calor, mejorando la privacidad y manteniendo luz interna</span>.
           </h1>
         </Reveal>
 
