@@ -59,13 +59,30 @@ function loadPixelScript() {
   }
 }
 
+const initedPixels = new Set<string>();
+
+function isArchPage() {
+  return window.location.pathname.startsWith(ARCH_PIXEL_PATH);
+}
+
 function activatePixel() {
   loadPixelScript();
   const fbq = window.fbq;
   if (!fbq) return;
   fbq("consent", "grant");
-  fbq("init", META_PIXEL_ID);
-  fbq("track", "PageView");
+
+  if (!initedPixels.has(META_PIXEL_ID)) {
+    initedPixels.add(META_PIXEL_ID);
+    fbq("init", META_PIXEL_ID);
+    fbq("trackSingle", META_PIXEL_ID, "PageView");
+  }
+
+  // Píxel exclusivo de la página de películas arquitectónicas
+  if (isArchPage() && !initedPixels.has(ARCH_PIXEL_ID)) {
+    initedPixels.add(ARCH_PIXEL_ID);
+    fbq("init", ARCH_PIXEL_ID);
+    fbq("trackSingle", ARCH_PIXEL_ID, "PageView");
+  }
 }
 
 function deactivatePixel() {
