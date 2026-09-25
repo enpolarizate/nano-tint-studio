@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "4167d742-1262-46a0-bc2e-36d9893bc5aa",
-  "project_id": "60ca2c3c-7151-4ca2-bacd-e5490cff30e1",
-  "url": "/__l5e/assets-v1/4167d742-1262-46a0-bc2e-36d9893bc5aa/tint-equilibrio.jpg",
-  "r2_key": "a/v1/60ca2c3c-7151-4ca2-bacd-e5490cff30e1/4167d742-1262-46a0-bc2e-36d9893bc5aa/tint-equilibrio.jpg",
-  "original_filename": "tint-equilibrio.jpg",
-  "size": 110626,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-27T03:41:51Z"
+  "created_at": "2026-06-27T03:41:51Z",
+  "original_filename": "tint-equilibrio.jpg",
+  "project_id": "1f7e888e-1a19-4949-aee2-d7d1e7fd7681",
+  "r2_key": "a/v1/1f7e888e-1a19-4949-aee2-d7d1e7fd7681/4167d742-1262-46a0-bc2e-36d9893bc5aa/tint-equilibrio.jpg",
+  "size": 110626,
+  "url": "/__l5e/assets-v1/4167d742-1262-46a0-bc2e-36d9893bc5aa/tint-equilibrio.jpg",
+  "version": 1
 }

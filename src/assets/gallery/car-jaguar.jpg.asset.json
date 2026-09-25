@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "3f6cb186-ef17-4f67-b8e8-4f391ed736ac",
-  "project_id": "60ca2c3c-7151-4ca2-bacd-e5490cff30e1",
-  "url": "/__l5e/assets-v1/3f6cb186-ef17-4f67-b8e8-4f391ed736ac/car-jaguar.jpg",
-  "r2_key": "a/v1/60ca2c3c-7151-4ca2-bacd-e5490cff30e1/3f6cb186-ef17-4f67-b8e8-4f391ed736ac/car-jaguar.jpg",
-  "original_filename": "car-jaguar.jpg",
-  "size": 2598621,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-26T03:24:15Z"
+  "created_at": "2026-06-26T03:24:15Z",
+  "original_filename": "car-jaguar.jpg",
+  "project_id": "1f7e888e-1a19-4949-aee2-d7d1e7fd7681",
+  "r2_key": "a/v1/1f7e888e-1a19-4949-aee2-d7d1e7fd7681/3f6cb186-ef17-4f67-b8e8-4f391ed736ac/car-jaguar.jpg",
+  "size": 2598621,
+  "url": "/__l5e/assets-v1/3f6cb186-ef17-4f67-b8e8-4f391ed736ac/car-jaguar.jpg",
+  "version": 1
 }

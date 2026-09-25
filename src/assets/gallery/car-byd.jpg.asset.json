@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "6dcb77ae-1790-4d44-9328-315caaefcd80",
-  "project_id": "60ca2c3c-7151-4ca2-bacd-e5490cff30e1",
-  "url": "/__l5e/assets-v1/6dcb77ae-1790-4d44-9328-315caaefcd80/car-byd.jpg",
-  "r2_key": "a/v1/60ca2c3c-7151-4ca2-bacd-e5490cff30e1/6dcb77ae-1790-4d44-9328-315caaefcd80/car-byd.jpg",
-  "original_filename": "car-byd.jpg",
-  "size": 2317836,
   "content_type": "image/jpeg",
-  "created_at": "2026-06-26T03:24:19Z"
+  "created_at": "2026-06-26T03:24:19Z",
+  "original_filename": "car-byd.jpg",
+  "project_id": "1f7e888e-1a19-4949-aee2-d7d1e7fd7681",
+  "r2_key": "a/v1/1f7e888e-1a19-4949-aee2-d7d1e7fd7681/6dcb77ae-1790-4d44-9328-315caaefcd80/car-byd.jpg",
+  "size": 2317836,
+  "url": "/__l5e/assets-v1/6dcb77ae-1790-4d44-9328-315caaefcd80/car-byd.jpg",
+  "version": 1
 }
