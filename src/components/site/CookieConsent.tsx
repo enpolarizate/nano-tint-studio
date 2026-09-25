@@ -1,28 +1,40 @@
 import { useEffect, useState } from "react";
 import { Cookie, X } from "lucide-react";
-
-const STORAGE_KEY = "cookieConsent";
+import {
+  CONSENT_CHANGED_EVENT,
+  CONSENT_KEY,
+  OPEN_SETTINGS_EVENT,
+  readConsent,
+} from "@/lib/metaPixel";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [choice, setChoice] = useState<string | null>(() => readConsent());
+
+  const showBanner = () => {
+    setVisible(true);
+    setMounted(true);
+  };
 
   useEffect(() => {
-    const consent = localStorage.getItem(STORAGE_KEY);
-    if (!consent) {
+    if (!localStorage.getItem(CONSENT_KEY)) {
       // pequeño delay para animar la entrada
-      const t = setTimeout(() => {
-        setVisible(true);
-        setMounted(true);
-      }, 600);
+      const t = setTimeout(showBanner, 600);
       return () => clearTimeout(t);
     }
+    // Permite reabrir desde el enlace "Preferencias de cookies" del footer
+    const reopen = () => showBanner();
+    window.addEventListener(OPEN_SETTINGS_EVENT, reopen);
+    return () => window.removeEventListener(OPEN_SETTINGS_EVENT, reopen);
   }, []);
 
-  const accept = () => {
-    localStorage.setItem(STORAGE_KEY, "true");
+  const saveChoice = (value: "accepted" | "rejected") => {
+    localStorage.setItem(CONSENT_KEY, value);
     localStorage.setItem("cookieConsentDate", new Date().toISOString());
+    setChoice(value);
     setVisible(false);
+    window.dispatchEvent(new CustomEvent(CONSENT_CHANGED_EVENT, { detail: value }));
   };
 
   if (!mounted) return null;
@@ -48,7 +60,10 @@ export default function CookieConsent() {
             <div className="flex-1 text-sm leading-relaxed text-muted-foreground">
               <p>
                 Utilizamos cookies y tecnologías similares para mejorar tu experiencia de navegación,
-                analizar el tráfico y personalizar contenido. Al continuar navegando, aceptas nuestra{" "}
+                analizar el tráfico y medir nuestras campañas publicitarias (píxel de Meta). Puedes
+                aceptar o rechazar; tu elección se aplica de inmediato y puedes cambiarla cuando
+                quieras desde el enlace "Preferencias de cookies" del pie de página. Al continuar,
+                aceptas nuestra{" "}
                 <a
                   href="/politica-privacidad"
                   className="font-semibold text-gold-light underline-offset-4 hover:text-gold hover:underline transition-colors"
@@ -60,14 +75,22 @@ export default function CookieConsent() {
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
+              {choice !== "rejected" && (
+                <button
+                  onClick={() => saveChoice("rejected")}
+                  className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold border border-border text-muted-foreground hover:text-foreground hover:border-gold/60 transition-all duration-300"
+                >
+                  Rechazar
+                </button>
+              )}
               <button
-                onClick={accept}
+                onClick={() => saveChoice("accepted")}
                 className="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-bold tracking-wide text-[hsl(var(--gold-foreground))] bg-[image:var(--gradient-gold)] shadow-[var(--shadow-gold)] hover:brightness-110 hover:-translate-y-0.5 transition-all duration-300"
               >
                 Aceptar
               </button>
               <button
-                onClick={accept}
+                onClick={() => setVisible(false)}
                 aria-label="Cerrar"
                 className="md:hidden h-10 w-10 inline-flex items-center justify-center rounded-full border border-border text-muted-foreground hover:text-gold-light hover:border-gold transition-colors"
               >
