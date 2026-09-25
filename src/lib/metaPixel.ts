@@ -5,6 +5,9 @@
  */
 
 export const META_PIXEL_ID = "1611555850751773";
+/** Segundo píxel: SOLO se activa en la página de películas arquitectónicas. */
+export const ARCH_PIXEL_ID = "1460815986109014";
+export const ARCH_PIXEL_PATH = "/peliculas-arquitectonicas";
 export const CONSENT_KEY = "cookieConsent";
 export const CONSENT_CHANGED_EVENT = "cookie-consent-changed";
 export const OPEN_SETTINGS_EVENT = "open-cookie-settings";
