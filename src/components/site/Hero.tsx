@@ -52,7 +52,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            Convierte los vidrios de tu carro en una <span className="text-amber-500">barrera de privacidad y protección</span>. <span className="text-amber-500">Nano Blindex Americano</span> con protección UV y mayor seguridad en una sola película
+            <span className="text-amber-500">Convierte los vidrios de tu carro</span> en una barrera de privacidad y protección. <span className="text-amber-500">Nano Blindex Americano</span> con protección UV y mayor seguridad en una sola película
           </motion.h1>
 
           <motion.p
