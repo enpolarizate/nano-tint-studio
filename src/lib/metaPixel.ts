@@ -117,7 +117,9 @@ export function initMetaPixel() {
       const href = anchor.getAttribute("href") || "";
       if (/wa\.link|wa\.me|api\.whatsapp\.com|whatsapp/i.test(href)) {
         if (readConsent() === "accepted" && window.fbq) {
-          window.fbq("track", "Contact");
+          for (const id of initedPixels) {
+            window.fbq("trackSingle", id, "Contact");
+          }
         }
       }
     },
