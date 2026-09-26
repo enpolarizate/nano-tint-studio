@@ -14,6 +14,7 @@ import logo from "@/assets/arquitectonico/logo.png";
 import heroImg from "@/assets/arquitectonico/hero.jpg";
 import installImg from "@/assets/arquitectonico/install.jpg";
 import buildingImg from "@/assets/arquitectonico/building.jpg";
+import houseImg from "@/assets/arquitectonico/house.jpg";
 import techViews from "@/assets/tech/views.jpg";
 import techEnergy from "@/assets/tech/energy.jpg";
 import techPrivacy from "@/assets/tech/privacy.jpg";
