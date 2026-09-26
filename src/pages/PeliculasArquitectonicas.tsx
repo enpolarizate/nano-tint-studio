@@ -869,28 +869,7 @@ function DomicilioPunto() {
           </h2>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-          {/* Domicilio */}
-          <Reveal>
-            <div className="h-full rounded-3xl border border-[oklch(1_0_0/0.08)] bg-[oklch(0.14_0.01_50/0.6)] p-8 md:p-10 backdrop-blur-xl">
-              <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-[oklch(0.09_0.012_50)] text-[var(--gold-light)] shadow-lg">
-                <Home className="h-6 w-6" />
-              </div>
-              <h3 className="mt-5 text-xl md:text-2xl font-bold">🏠 DOMICILIO GRATIS EN BOGOTÁ</h3>
-              <ul className="mt-6 space-y-3">
-                {["Instalación en tu casa o trabajo", "Sin costo adicional", "Mismo estándar profesional", "Con agendamiento previo"].map((x) => (
-                  <li key={x} className="flex items-start gap-3 text-foreground/90">
-                    <CheckCircle2 className="h-5 w-5 text-[var(--gold)] shrink-0 mt-0.5" strokeWidth={2.5} />
-                    <span>{x}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-sm text-muted-foreground italic">
-                Agenda tu horario y nosotros nos encargamos del resto.
-              </p>
-            </div>
-          </Reveal>
-
+        <div className="grid gap-6 md:gap-8 max-w-2xl mx-auto">
           {/* Punto de instalación principal */}
           <Reveal delay={100}>
             <div className="h-full rounded-3xl border border-[oklch(0.82_0.14_85/0.25)] bg-[oklch(0.13_0.012_50/0.6)] p-8 md:p-10 backdrop-blur-xl">
