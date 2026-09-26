@@ -258,15 +258,16 @@ function Tints() {
                   onClick={() => setSelectedTint(i)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
                   title={`Ver ${o.title} en imagen completa`}
-                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 transition-transform duration-200 hover:scale-[1.02] hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
+                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 transition-all duration-300 hover:scale-[1.06] hover:z-10 hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
                   style={{
                     backgroundImage: `url(${houseImg})`,
                     backgroundPosition: `${(i / (n - 1)) * 100}% center`,
                     backgroundSize: `${n * 100}% 100%`,
                   }}
                 >
-                  <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14">
+                  <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ boxShadow: "inset 0 0 0 2px var(--gold), 0 0 24px 4px oklch(0.82 0.14 85 / 0.55)" }} />
+                  <span className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14 transition-transform duration-300 group-hover:scale-105">
                     <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
                     <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
                   </span>
@@ -299,17 +300,6 @@ function Tints() {
                     hsl(var(--foreground) / 0.35) ${100 / n}%)`,
                 }}
               />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute z-20 hidden md:flex h-12 w-12 items-center justify-center rounded-full border-2 border-[var(--gold)] bg-[var(--gold)]/20 text-[var(--gold)] shadow-[0_0_18px_var(--gold)] transition-opacity duration-150"
-                style={{
-                  left: cursorPos.x - 24,
-                  top: cursorPos.y - 24,
-                  opacity: cursorActive ? 1 : 0,
-                }}
-              >
-                <Maximize2 className="h-5 w-5" strokeWidth={2.5} />
-              </div>
             </div>
 
           </div>
