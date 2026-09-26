@@ -265,15 +265,9 @@ function Tints() {
                     backgroundSize: `${n * 100}% 100%`,
                   }}
                 >
-                  {o.badge && (
-                    <span className="absolute left-1/2 top-2 z-10 -translate-x-1/2 whitespace-normal rounded-full bg-[var(--gradient-gold)] px-2 py-0.5 text-[8px] font-bold uppercase text-[var(--ink)] md:top-3 md:px-2.5 md:text-[9px]">
-                      {o.badge}
-                    </span>
-                  )}
                   <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14">
                     <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
                     <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
-                    <Maximize2 className="mt-1 hidden h-3 w-3 opacity-80 md:block" />
                   </span>
                 </Button>
               ))}
