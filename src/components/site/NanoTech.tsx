@@ -9,7 +9,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import car from "@/assets/nano-blindex-car.jpg";
-import capasAsset from "@/assets/nanoblindex-capas.png.asset.json";
+import capasImg from "@/assets/nanoblindex-capas.png";
 import { Reveal } from "./motion";
 import { WHATSAPP_URL } from "./FloatingWhatsApp";
 import { motion } from "framer-motion";
@@ -79,7 +79,7 @@ function LayersImage({ activeLayer }: { activeLayer: number | null }) {
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.img
-        src={capasAsset.url}
+        src={capasImg}
         alt="Capas del film Nano Blindex Expectrum: resina, poliéster, nanocerámica, policarbonato, carbono y membrana antirraya"
         loading="lazy"
         className="relative w-full max-w-md h-auto"
