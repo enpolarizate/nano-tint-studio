@@ -313,7 +313,7 @@ function Tints() {
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute z-20 hidden md:flex h-12 w-12 items-center justify-center rounded-full border-2 border-[var(--gold)] bg-[var(--gold)]/15 text-[var(--gold)] transition-opacity duration-150 animate-pulse"
+                className="pointer-events-none absolute z-20 hidden md:flex h-12 w-12 items-center justify-center rounded-full border-2 border-[var(--gold)] bg-[var(--gold)]/20 text-[var(--gold)] shadow-[0_0_18px_var(--gold)] transition-opacity duration-150"
                 style={{
                   left: cursorPos.x - 24,
                   top: cursorPos.y - 24,
