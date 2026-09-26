@@ -185,6 +185,7 @@ function LayerPlate({
         >
           {n}
         </span>
+      </div>
       </motion.div>
     </motion.div>
   );
