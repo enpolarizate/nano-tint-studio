@@ -233,9 +233,6 @@ function Tints() {
   const n = opts.length;
   const [selectedTint, setSelectedTint] = useState<number | null>(null);
   const activeTint = opts[selectedTint ?? 0];
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [cursorActive, setCursorActive] = useState(false);
-  const stripRef = useRef<HTMLDivElement>(null);
 
   return (
     <section className="relative bg-background text-foreground">
@@ -252,16 +249,7 @@ function Tints() {
 
         <Reveal delay={100} className="mt-14">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
-            <div
-              ref={stripRef}
-              className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]"
-              onMouseMove={(e) => {
-                const rect = stripRef.current?.getBoundingClientRect();
-                if (rect) setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-              }}
-              onMouseEnter={() => setCursorActive(true)}
-              onMouseLeave={() => setCursorActive(false)}
-            >
+            <div className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]">
               {opts.map((o, i) => (
                 <Button
                   key={o.p}
