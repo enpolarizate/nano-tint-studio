@@ -6,11 +6,10 @@ import {
   Briefcase, Store, Stethoscope, Layers, CheckCircle2, ChevronDown,
   MessageCircle, Award, Ruler, FileText,
   CalendarCheck, ShieldCheck, Zap, Palette, MonitorSmartphone, PaintBucket,
-  Droplets, CloudRain, Wind, Users, Quote, MapPin,
+  Droplets, CloudRain, Wind, Users, Quote, MapPin, Maximize2,
 } from "lucide-react";
-import tintMasOscuro from "@/assets/tint-mas-oscuro.jpg";
-import tintEquilibrio from "@/assets/tint-equilibrio.jpg";
-import tintMasClaro from "@/assets/tint-mas-claro.jpg";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import logo from "@/assets/arquitectonico/logo.png";
 import heroImg from "@/assets/arquitectonico/hero.jpg";
 import installImg from "@/assets/arquitectonico/install.jpg";
@@ -221,10 +220,13 @@ function Hero() {
 /* ---------------- 3. Tints ---------------- */
 function Tints() {
   const opts = [
-    { p: "35%", title: "El más oscuro", desc: "Ideal si quieres privacidad, mínima visibilidad desde afuera.", shade: "oklch(0.18 0.005 250)" },
-    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", shade: "oklch(0.42 0.02 80)", badge: "Más elegida" },
-    { p: "70%", title: "El más claro", desc: "Mantiene el espacio muy iluminado. Ideal para máxima seguridad sin perder luz.", shade: "oklch(0.78 0.015 80)" },
+    { p: "35%", title: "El más oscuro", desc: "Ideal si quieres privacidad, mínima visibilidad desde afuera.", overlay: "bg-foreground/60" },
+    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-foreground/35", badge: "Más elegida" },
+    { p: "70%", title: "El más claro", desc: "Mantiene el espacio muy iluminado. Ideal para máxima seguridad sin perder luz.", overlay: "bg-foreground/10" },
   ];
+  const [selectedTint, setSelectedTint] = useState<number | null>(null);
+  const activeTint = opts[selectedTint ?? 0];
+
   return (
     <section className="relative bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-4 pt-20 md:pt-28 pb-10 md:pb-14">
@@ -238,37 +240,75 @@ function Tints() {
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3 items-stretch">
-          {opts.map((o, i) => (
-            <Reveal key={o.p} delay={i * 120} className="h-full">
-              <div className="group relative overflow-hidden glass-card rounded-2xl transition-transform duration-500 hover:-translate-y-1 h-full flex flex-col">
-                {o.badge && (
-                  <span className="absolute right-4 top-4 z-10 rounded-full bg-[var(--gradient-gold)] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--ink)]">{o.badge}</span>
-                )}
-                <div
-                  className="relative h-44 overflow-hidden flex-shrink-0 bg-cover bg-center"
-                  style={
-                    i === 0
-                      ? { backgroundImage: `url(${tintMasOscuro})` }
-                      : i === 1
-                      ? { backgroundImage: `url(${tintEquilibrio})` }
-                      : { backgroundImage: `url(${tintMasClaro})` }
-                  }
+        <Reveal delay={100} className="mt-14">
+          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
+            <div className="relative flex aspect-[4/3] w-full overflow-hidden md:aspect-[16/7]">
+              {opts.map((o, i) => (
+                <Button
+                  key={o.p}
+                  type="button"
+                  variant="ghost"
+                  onClick={() => setSelectedTint(i)}
+                  aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
+                  title={`Ver ${o.title} en imagen completa`}
+                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none border-r border-primary-foreground/60 p-0 last:border-r-0 hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
+                  style={{
+                    backgroundImage: `url(${buildingImg})`,
+                    backgroundPosition: `${i * 50}% center`,
+                    backgroundSize: "300% 100%",
+                  }}
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(1_0_0/0.18),transparent_60%)]" />
-                  <div className="absolute inset-0 bg-black/40" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-6xl font-extrabold tracking-tight text-white drop-shadow-lg">{o.p}</span>
-                  </div>
-                </div>
-                <div className="p-6 flex-grow flex flex-col justify-center">
-                  <h3 className="text-lg font-bold">{o.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{o.desc}</p>
-                </div>
+                  <span className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-90 ${o.overlay}`} />
+                  {o.badge && (
+                    <span className="absolute left-1/2 top-3 z-10 -translate-x-1/2 whitespace-normal rounded-full bg-[var(--gradient-gold)] px-2 py-1 text-[9px] font-bold uppercase text-[var(--ink)] md:top-5 md:px-3 md:text-[10px]">
+                      {o.badge}
+                    </span>
+                  )}
+                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-foreground/90 to-transparent px-2 pb-4 pt-16 text-primary-foreground md:pb-6">
+                    <span className="text-2xl font-extrabold md:text-5xl">{o.p}</span>
+                    <span className="mt-1 whitespace-normal text-center text-[10px] font-bold uppercase md:text-sm">{o.title}</span>
+                    <Maximize2 className="mt-2 h-4 w-4 opacity-80" />
+                  </span>
+                </Button>
+              ))}
+            </div>
+
+            <div className="grid divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
+              {opts.map((o, i) => (
+                <button
+                  key={o.title}
+                  type="button"
+                  onClick={() => setSelectedTint(i)}
+                  className="p-4 text-left transition-colors hover:bg-accent md:p-5"
+                  aria-label={`Ampliar ${o.title}`}
+                >
+                  <p className="text-sm text-muted-foreground">{o.desc}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+          <p className="mt-3 text-center text-xs text-muted-foreground">Toca una tonalidad para verla en imagen completa.</p>
+        </Reveal>
+
+        <Dialog open={selectedTint !== null} onOpenChange={(open) => { if (!open) setSelectedTint(null); }}>
+          <DialogContent className="w-[calc(100%-2rem)] max-w-5xl overflow-hidden border-border bg-card p-0">
+            <DialogTitle className="sr-only">Tonalidad {activeTint.p}: {activeTint.title}</DialogTitle>
+            <DialogDescription className="sr-only">Vista completa de la fachada con la tonalidad seleccionada.</DialogDescription>
+            <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-video">
+              <img
+                src={buildingImg}
+                alt={`Fachada con película arquitectónica en tonalidad ${activeTint.p}`}
+                className="h-full w-full object-cover"
+              />
+              <div className={`absolute inset-0 ${activeTint.overlay}`} />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/95 to-transparent px-5 pb-6 pt-20 text-primary-foreground md:px-8 md:pb-8">
+                <p className="text-3xl font-extrabold md:text-5xl">{activeTint.p}</p>
+                <p className="mt-1 text-lg font-bold md:text-2xl">{activeTint.title}</p>
+                <p className="mt-2 max-w-2xl text-sm opacity-85 md:text-base">{activeTint.desc}</p>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            </div>
+          </DialogContent>
+        </Dialog>
 
 
         <Reveal delay={100}>
