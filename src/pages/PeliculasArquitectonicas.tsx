@@ -8,12 +8,12 @@ import {
   CalendarCheck, ShieldCheck, Zap, Palette, MonitorSmartphone, PaintBucket,
   Droplets, CloudRain, Wind, Users, Quote, MapPin,
 } from "lucide-react";
-import tintMasOscuro from "@/assets/tint-mas-oscuro.jpg.asset.json";
-import tintEquilibrio from "@/assets/tint-equilibrio.jpg.asset.json";
-import tintMasClaro from "@/assets/tint-mas-claro.jpg.asset.json";
+import tintMasOscuro from "@/assets/tint-mas-oscuro.jpg";
+import tintEquilibrio from "@/assets/tint-equilibrio.jpg";
+import tintMasClaro from "@/assets/tint-mas-claro.jpg";
 import logo from "@/assets/arquitectonico/logo.png";
 import heroImg from "@/assets/arquitectonico/hero.jpg";
-import installImg from "@/assets/arquitectonico/install.jpg.asset.json";
+import installImg from "@/assets/arquitectonico/install.jpg";
 import buildingImg from "@/assets/arquitectonico/building.jpg";
 import techViews from "@/assets/tech/views.jpg";
 import techEnergy from "@/assets/tech/energy.jpg";
@@ -249,10 +249,10 @@ function Tints() {
                   className="relative h-44 overflow-hidden flex-shrink-0 bg-cover bg-center"
                   style={
                     i === 0
-                      ? { backgroundImage: `url(${tintMasOscuro.url})` }
+                      ? { backgroundImage: `url(${tintMasOscuro})` }
                       : i === 1
-                      ? { backgroundImage: `url(${tintEquilibrio.url})` }
-                      : { backgroundImage: `url(${tintMasClaro.url})` }
+                      ? { backgroundImage: `url(${tintEquilibrio})` }
+                      : { backgroundImage: `url(${tintMasClaro})` }
                   }
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(1_0_0/0.18),transparent_60%)]" />
@@ -523,7 +523,7 @@ function InstallSection() {
           <Reveal>
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-[var(--gradient-gold)] opacity-15 blur-2xl" />
-              <img src={installImg.url} alt="Instalación profesional de película arquitectónica" width={1920} height={1280} loading="lazy" className="relative aspect-[4/3] w-full rounded-2xl object-cover shadow-[var(--shadow-card)]" />
+              <img src={installImg} alt="Instalación profesional de película arquitectónica" width={1920} height={1280} loading="lazy" className="relative aspect-[4/3] w-full rounded-2xl object-cover shadow-[var(--shadow-card)]" />
             </div>
           </Reveal>
           <Reveal delay={150}>
