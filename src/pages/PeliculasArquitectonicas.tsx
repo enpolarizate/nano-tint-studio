@@ -854,6 +854,91 @@ function Wholesale() {
   );
 }
 
+/* ---------- 11c. Domicilio + Punto principal ---------- */
+function DomicilioPunto() {
+  return (
+    <section className="relative overflow-hidden bg-[var(--ink)]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.82_0.14_85/0.10),transparent_60%)]" />
+      <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+        <Reveal className="text-center max-w-2xl mx-auto mb-14">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.82_0.14_85/0.3)] bg-[oklch(0.82_0.14_85/0.08)] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--gold-soft)]">
+            Cobertura
+          </span>
+          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">
+            INSTALACIÓN <span className="text-gradient-gold">A TU MEDIDA</span>
+          </h2>
+        </Reveal>
+
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+          {/* Domicilio */}
+          <Reveal>
+            <div className="h-full rounded-3xl border border-[oklch(1_0_0/0.08)] bg-[oklch(0.14_0.01_50/0.6)] p-8 md:p-10 backdrop-blur-xl">
+              <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-[oklch(0.09_0.012_50)] text-[var(--gold-light)] shadow-lg">
+                <Home className="h-6 w-6" />
+              </div>
+              <h3 className="mt-5 text-xl md:text-2xl font-bold">🏠 DOMICILIO GRATIS EN BOGOTÁ</h3>
+              <ul className="mt-6 space-y-3">
+                {["Instalación en tu casa o trabajo", "Sin costo adicional", "Mismo estándar profesional", "Con agendamiento previo"].map((x) => (
+                  <li key={x} className="flex items-start gap-3 text-foreground/90">
+                    <CheckCircle2 className="h-5 w-5 text-[var(--gold)] shrink-0 mt-0.5" strokeWidth={2.5} />
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm text-muted-foreground italic">
+                Agenda tu horario y nosotros nos encargamos del resto.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Punto de instalación principal */}
+          <Reveal delay={100}>
+            <div className="h-full rounded-3xl border border-[oklch(0.82_0.14_85/0.25)] bg-[oklch(0.13_0.012_50/0.6)] p-8 md:p-10 backdrop-blur-xl">
+              <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-[var(--gradient-gold)] text-[var(--ink)] shadow-[var(--shadow-gold)]">
+                <MapPin className="h-6 w-6" />
+              </div>
+              <h3 className="mt-5 text-xl md:text-2xl font-bold">📍 PUNTO DE INSTALACIÓN PRINCIPAL</h3>
+              <ul className="mt-6 space-y-4">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                  <span className="text-foreground/90">
+                    <span className="font-semibold">DIRECCIÓN SEDE PRINCIPAL BOGOTÁ: </span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=carrera+16c+161-50+Bogot%C3%A1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    >
+                      carrera 16 c # 161-50
+                    </a>
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                  <span className="text-foreground/90">
+                    <span className="font-semibold">CONTACTO SEDE PRINCIPAL: </span>
+                    <a
+                      href={WA_DEFAULT}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    >
+                      3115589646
+                    </a>
+                  </span>
+                </li>
+              </ul>
+              <p className="mt-6 text-sm text-muted-foreground italic">
+                Elige si lo quiere a domicilio o en punto fisico.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- 11b. Distribución ---------- */
 const DISTRIBUCION = [
   {
