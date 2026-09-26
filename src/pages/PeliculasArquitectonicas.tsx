@@ -233,6 +233,9 @@ function Tints() {
   const n = opts.length;
   const [selectedTint, setSelectedTint] = useState<number | null>(null);
   const activeTint = opts[selectedTint ?? 0];
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [cursorActive, setCursorActive] = useState(false);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   return (
     <section className="relative bg-background text-foreground">
