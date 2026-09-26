@@ -276,9 +276,11 @@ function Tints() {
                     aria-hidden
                     className="pointer-events-none absolute -inset-[3px] z-20 border border-primary bg-gradient-to-b from-accent/20 via-transparent to-primary/15 opacity-0 shadow-[inset_0_0_18px_2px_hsl(var(--gold-light)/0.34),0_0_14px_1px_hsl(var(--gold)/0.28)] group-hover:opacity-100 group-focus-visible:opacity-100"
                   />
-                  <span className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground transition-transform duration-300 group-hover:-translate-y-2 group-hover:text-accent group-focus-visible:-translate-y-2 group-focus-visible:text-accent md:pb-3 md:pt-14">
-                    <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
-                    <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
+                  <span className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14">
+                    <span className="flex flex-col items-center transition-transform duration-300 group-hover:-translate-y-2 group-hover:text-accent group-focus-visible:-translate-y-2 group-focus-visible:text-accent">
+                      <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
+                      <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
+                    </span>
                   </span>
                 </Button>
               ))}
