@@ -1,168 +1,11 @@
-import {
-  Award,
-  Flag,
-  Atom,
-  Sun,
-  ShieldCheck,
-  Sparkles,
-  ArrowRight,
-  type LucideIcon,
-} from "lucide-react";
 import car from "@/assets/nano-blindex-car.jpg";
-import capasImg from "@/assets/nanoblindex-capas.png";
+import capasHorizontal from "@/assets/nanoblindex-capas-horizontal.png";
+import capasVertical from "@/assets/nanoblindex-capas-vertical.jpg";
 import { Reveal } from "./motion";
 import { WHATSAPP_URL } from "./FloatingWhatsApp";
-import { motion } from "framer-motion";
-import { useState } from "react";
-
-type CardData = {
-  n: number;
-  icon: LucideIcon;
-  title: string;
-  desc: string;
-};
-
-const cards: CardData[] = [
-  {
-    n: 1,
-    icon: Award,
-    title: "DS-RESINA",
-    desc: "Capa de resina de alta resistencia que brinda durabilidad y claridad al film.",
-  },
-  {
-    n: 2,
-    icon: Flag,
-    title: "POLIÉSTER PREMIUM AMERICANO",
-    desc: "Película base de poliéster de alta calidad, con gran resistencia mecánica y estabilidad dimensional.",
-  },
-  {
-    n: 3,
-    icon: Atom,
-    title: "NANOTECNOLOGÍA NANOCERÁMICA HD",
-    desc: "Tecnología avanzada que bloquea el calor, reduce el deslumbramiento y mejora la visibilidad.",
-  },
-  {
-    n: 4,
-    icon: Sun,
-    title: "LUBRIZOL AMERICANO POLICARBONATO PREMIUM",
-    desc: "Capa de policarbonato de alta resistencia, que protege contra impactos, rayaduras y rayos UV.",
-  },
-  {
-    n: 5,
-    icon: ShieldCheck,
-    title: "CARBONO HÍBRIDO HIGH DEFINICIÓN",
-    desc: "Capa de carbono que refuerza la estructura del film y mejora la nitidez y la definición visual.",
-  },
-  {
-    n: 6,
-    icon: Sparkles,
-    title: "MEMBRANA ANTIRRAYA EXPECTRUM",
-    desc: "Capa final de protección contra rayones, abrasión y agentes externos.",
-  },
-];
-
-function LayersImage({ activeLayer }: { activeLayer: number | null }) {
-  return (
-    <div className="relative flex items-center justify-center">
-      {/* breathing glow behind the image */}
-      <motion.div
-        aria-hidden
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          width: "110%",
-          height: "90%",
-          background:
-            "radial-gradient(circle, hsl(39 70% 44% / 0.12), rgba(40,90,255,0.10) 45%, transparent 70%)",
-          filter: "blur(24px)",
-        }}
-        animate={{ opacity: [0.4, 0.85, 0.4] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.img
-        src={capasImg}
-        alt="Capas del film Nano Blindex Expectrum: resina, poliéster, nanocerámica, policarbonato, carbono y membrana antirraya"
-        loading="lazy"
-        className="relative w-full max-w-md h-auto"
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          filter: activeLayer
-            ? "drop-shadow(0 0 28px hsl(39 70% 44% / 0.45))"
-            : "drop-shadow(0 0 18px rgba(40,90,255,0.25))",
-          transition: "filter 0.5s ease",
-        }}
-      />
-      {/* active layer label */}
-      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-5 pointer-events-none">
-        <span
-          className={`text-[11px] font-bold tracking-[0.2em] uppercase transition-opacity duration-300 ${
-            activeLayer ? "text-gold opacity-100" : "opacity-0"
-          }`}
-        >
-          {activeLayer ? cards[activeLayer - 1].title : ""}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function TechCard({
-  card,
-  active,
-  onHover,
-  side,
-}: {
-  card: CardData;
-  active: boolean;
-  onHover: (n: number | null) => void;
-  side: "left" | "right";
-}) {
-  const Icon = card.icon;
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: side === "left" ? -30 : 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      onMouseEnter={() => onHover(card.n)}
-      onMouseLeave={() => onHover(null)}
-      className={`group relative p-4 rounded-xl border transition-all duration-500 cursor-pointer ${
-        active
-          ? "border-gold/60 bg-gold/8 shadow-[var(--shadow-gold)]"
-          : "border-border/40 bg-surface-3/50 hover:border-gold/25"
-      }`}
-    >
-      <div className="flex items-start gap-3">
-        <span
-          className={`flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-400 ${
-            active
-              ? "bg-gradient-to-br from-gold to-gold-light text-[hsl(var(--gold-foreground))] scale-110"
-              : "bg-surface-2 text-gold"
-          }`}
-        >
-          <Icon className="h-4.5 w-4.5" strokeWidth={2} />
-        </span>
-        <div className="min-w-0">
-          <h4
-            className={`text-xs font-bold tracking-wide transition-colors duration-300 ${
-              active ? "text-gold" : "text-foreground/90"
-            }`}
-          >
-            <span className="text-gold/50 mr-1">{card.n}.</span>
-            {card.title}
-          </h4>
-          <p className="mt-1 text-[11px] text-muted-foreground leading-relaxed">
-            {card.desc}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+import { ArrowRight } from "lucide-react";
 
 export default function NanoTech() {
-  const [activeLayer, setActiveLayer] = useState<number | null>(null);
-
   return (
     <section
       id="tecnologia"
@@ -213,7 +56,7 @@ export default function NanoTech() {
           </div>
         </Reveal>
 
-        {/* Layers image + Cards: horizontal layout, image center, cards around */}
+        {/* 6 capas: imagen horizontal (PC) / vertical (celular) */}
         <Reveal delay={1}>
           <div className="mt-14">
             <div className="text-center mb-8">
@@ -224,56 +67,21 @@ export default function NanoTech() {
               </h3>
             </div>
 
-            {/* ── Desktop: 3-column horizontal ── */}
-            <div className="hidden md:grid grid-cols-[1fr_auto_1fr] gap-6 items-center max-w-6xl mx-auto">
-              {/* Left cards: 1-3 */}
-              <div className="space-y-3">
-                {cards.slice(0, 3).map((card) => (
-                  <TechCard
-                    key={card.n}
-                    card={card}
-                    active={activeLayer === card.n}
-                    onHover={setActiveLayer}
-                    side="left"
-                  />
-                ))}
-              </div>
-
-              {/* Center: layers image */}
-              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden px-6 py-8">
-                <LayersImage activeLayer={activeLayer} />
-              </div>
-
-              {/* Right cards: 4-6 */}
-              <div className="space-y-3">
-                {cards.slice(3, 6).map((card) => (
-                  <TechCard
-                    key={card.n}
-                    card={card}
-                    active={activeLayer === card.n}
-                    onHover={setActiveLayer}
-                    side="right"
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* ── Mobile: stacked, image on top, cards below ── */}
-            <div className="md:hidden space-y-5">
-              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden px-4 py-6">
-                <LayersImage activeLayer={activeLayer} />
-              </div>
-              <div className="grid grid-cols-1 gap-3">
-                {cards.map((card) => (
-                  <TechCard
-                    key={card.n}
-                    card={card}
-                    active={activeLayer === card.n}
-                    onHover={setActiveLayer}
-                    side="left"
-                  />
-                ))}
-              </div>
+            <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden p-4 md:p-8">
+              {/* Desktop: horizontal */}
+              <img
+                src={capasHorizontal}
+                alt="Capas del film Nano Blindex Expectrum: resina, poliéster, nanocerámica, policarbonato, carbono y membrana antirraya"
+                loading="lazy"
+                className="hidden md:block w-full h-auto rounded-xl"
+              />
+              {/* Mobile: vertical */}
+              <img
+                src={capasVertical}
+                alt="Capas del film Nano Blindex Expectrum: resina, poliéster, nanocerámica, policarbonato, carbono y membrana antirraya"
+                loading="lazy"
+                className="block md:hidden w-full h-auto rounded-xl"
+              />
             </div>
           </div>
         </Reveal>
