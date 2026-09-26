@@ -252,7 +252,16 @@ function Tints() {
 
         <Reveal delay={100} className="mt-14">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
-            <div className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]">
+            <div
+              ref={stripRef}
+              className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]"
+              onMouseMove={(e) => {
+                const rect = stripRef.current?.getBoundingClientRect();
+                if (rect) setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+              }}
+              onMouseEnter={() => setCursorActive(true)}
+              onMouseLeave={() => setCursorActive(false)}
+            >
               {opts.map((o, i) => (
                 <Button
                   key={o.p}
@@ -261,13 +270,14 @@ function Tints() {
                   onClick={() => setSelectedTint(i)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
                   title={`Ver ${o.title} en imagen completa`}
-                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
+                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 transition-transform duration-200 hover:scale-[1.02] hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
                   style={{
                     backgroundImage: `url(${houseImg})`,
                     backgroundPosition: `${(i / (n - 1)) * 100}% center`,
                     backgroundSize: `${n * 100}% 100%`,
                   }}
                 >
+                  <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                   <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14">
                     <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
                     <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
