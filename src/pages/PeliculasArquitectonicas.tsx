@@ -34,6 +34,7 @@ import expApartamento from "@/assets/tech/apartamento.jpg";
 import expOficina from "@/assets/tech/oficina.jpg";
 import expLocal from "@/assets/tech/local.jpg";
 import expEdificio from "@/assets/tech/edificio.jpg";
+import puntoInstalacionImg from "@/assets/punto-instalacion.jpg";
 import expHotel from "@/assets/tech/hotel.jpg";
 import expConsultorio from "@/assets/tech/consultorio.jpg";
 import expFachada from "@/assets/tech/fachada.jpg";
@@ -869,47 +870,60 @@ function DomicilioPunto() {
           </h2>
         </Reveal>
 
-        <div className="grid gap-6 md:gap-8 max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Punto de instalación principal */}
           <Reveal delay={100}>
-            <div className="h-full rounded-3xl border border-[oklch(0.82_0.14_85/0.25)] bg-[oklch(0.13_0.012_50/0.6)] p-8 md:p-10 backdrop-blur-xl">
-              <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-[var(--gradient-gold)] text-[var(--ink)] shadow-[var(--shadow-gold)]">
-                <MapPin className="h-6 w-6" />
+            <div className="grid overflow-hidden rounded-3xl border border-[oklch(0.82_0.14_85/0.25)] bg-[oklch(0.13_0.012_50/0.6)] backdrop-blur-xl md:grid-cols-2">
+              {/* Imagen */}
+              <div className="relative min-h-[240px] md:min-h-full">
+                <img
+                  src={puntoInstalacionImg}
+                  alt="Punto de instalación principal de películas arquitectónicas"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.13_0.012_50/0.85)] via-[oklch(0.13_0.012_50/0.25)] to-transparent md:bg-gradient-to-r" />
               </div>
-              <h3 className="mt-5 text-xl md:text-2xl font-bold">📍 PUNTO DE INSTALACIÓN PRINCIPAL</h3>
-              <ul className="mt-6 space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
-                  <span className="text-foreground/90">
-                    <span className="font-semibold">DIRECCIÓN SEDE PRINCIPAL BOGOTÁ: </span>
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=carrera+16c+161-50+Bogot%C3%A1"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors"
-                    >
-                      carrera 16 c # 161-50
-                    </a>
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
-                  <span className="text-foreground/90">
-                    <span className="font-semibold">CONTACTO SEDE PRINCIPAL: </span>
-                    <a
-                      href={WA_DEFAULT}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors"
-                    >
-                      3115589646
-                    </a>
-                  </span>
-                </li>
-              </ul>
-              <p className="mt-6 text-sm text-muted-foreground italic">
-                Elige si lo quiere a domicilio o en punto fisico.
-              </p>
+              {/* Contenido */}
+              <div className="p-8 md:p-10">
+                <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-[var(--gradient-gold)] text-[var(--ink)] shadow-[var(--shadow-gold)]">
+                  <MapPin className="h-6 w-6" />
+                </div>
+                <h3 className="mt-5 text-xl md:text-2xl font-bold">📍 PUNTO DE INSTALACIÓN PRINCIPAL</h3>
+                <ul className="mt-6 space-y-4">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                    <span className="text-foreground/90">
+                      <span className="font-semibold">DIRECCIÓN SEDE PRINCIPAL BOGOTÁ: </span>
+                      <a
+                        href="https://www.google.com/maps/search/?api=1&query=carrera+16c+161-50+Bogot%C3%A1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                      >
+                        carrera 16 c # 161-50
+                      </a>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                    <span className="text-foreground/90">
+                      <span className="font-semibold">CONTACTO SEDE PRINCIPAL: </span>
+                      <a
+                        href={WA_DEFAULT}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-4 decoration-[oklch(0.82_0.14_85/0.6)] hover:decoration-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                      >
+                        3115589646
+                      </a>
+                    </span>
+                  </li>
+                </ul>
+                <p className="mt-6 text-sm text-muted-foreground italic">
+                  Elige si lo quiere a domicilio o en punto fisico.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
