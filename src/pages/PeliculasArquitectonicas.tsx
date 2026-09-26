@@ -232,6 +232,7 @@ function Tints() {
   ];
   const n = opts.length;
   const [selectedTint, setSelectedTint] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
   const activeTint = opts[selectedTint ?? 0];
 
   return (
