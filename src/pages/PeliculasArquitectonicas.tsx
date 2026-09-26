@@ -267,7 +267,7 @@ function Tints() {
                   style={{
                     backgroundImage: `url(${houseImg})`,
                     backgroundPosition: `${(i / (n - 1)) * 100}% center`,
-                    backgroundSize: `${n * 100}% 100%`,
+                    backgroundSize: `${n * 100}% auto`,
                   }}
                 >
                   <span className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14">
