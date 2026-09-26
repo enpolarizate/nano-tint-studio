@@ -304,7 +304,7 @@ function Tints() {
             <DialogDescription className="sr-only">Vista completa de la fachada con la tonalidad seleccionada.</DialogDescription>
             <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-video">
               <img
-                src={buildingImg}
+                src={houseImg}
                 alt={`Fachada con película arquitectónica en tonalidad ${activeTint.p}`}
                 className="h-full w-full object-cover"
               />
