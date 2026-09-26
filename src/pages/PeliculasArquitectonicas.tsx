@@ -221,13 +221,13 @@ function Hero() {
 /* ---------------- 3. Tints ---------------- */
 function Tints() {
   const opts = [
-    { p: "Black out", title: "Black out", desc: "Privacidad total. Cero visibilidad desde afuera y bloqueo completo de la luz.", overlay: "bg-background/95" },
-    { p: "5%", title: "Máxima privacidad", desc: "Muy poca luz entra. Privacidad casi total.", overlay: "bg-background/88" },
-    { p: "15%", title: "Alta privacidad", desc: "Privacidad alta con luz tenue.", overlay: "bg-background/78" },
-    { p: "20%", title: "Privacidad alta", desc: "Ideal para dormitorios y espacios íntimos.", overlay: "bg-background/68" },
-    { p: "35%", title: "El más oscuro", desc: "Privacidad y protección balanceadas, poca visibilidad desde afuera.", overlay: "bg-background/55" },
-    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/40", badge: "Más elegida" },
-    { p: "70%", title: "El más claro", desc: "Mantiene el espacio iluminado con protección UV y seguridad.", overlay: "bg-background/20" },
+    { p: "Black out", title: "Black out", desc: "Privacidad total. Cero visibilidad desde afuera y bloqueo completo de la luz.", overlay: "bg-background" },
+    { p: "5%", title: "Máxima privacidad", desc: "Muy poca luz entra. Privacidad casi total.", overlay: "bg-background/95" },
+    { p: "15%", title: "Alta privacidad", desc: "Privacidad alta con luz tenue.", overlay: "bg-background/85" },
+    { p: "20%", title: "Privacidad alta", desc: "Ideal para dormitorios y espacios íntimos.", overlay: "bg-background/80" },
+    { p: "35%", title: "El más oscuro", desc: "Privacidad y protección balanceadas, poca visibilidad desde afuera.", overlay: "bg-background/65" },
+    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/50", badge: "Más elegida" },
+    { p: "70%", title: "El más claro", desc: "Mantiene el espacio iluminado con protección UV y seguridad.", overlay: "bg-background/30" },
     { p: "No Tint", title: "Sin película", desc: "Máxima luz, sin privacidad ni protección. Referencia.", overlay: "bg-transparent" },
   ];
   const n = opts.length;
@@ -282,13 +282,13 @@ function Tints() {
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background: `linear-gradient(to right,
-                    hsl(var(--background) / 0.95) 0%,
-                    hsl(var(--background) / 0.88) 12.5%,
-                    hsl(var(--background) / 0.78) 25%,
-                    hsl(var(--background) / 0.68) 37.5%,
-                    hsl(var(--background) / 0.55) 50%,
-                    hsl(var(--background) / 0.40) 62.5%,
-                    hsl(var(--background) / 0.20) 75%,
+                    hsl(var(--background) / 1) 0%,
+                    hsl(var(--background) / 0.95) 12.5%,
+                    hsl(var(--background) / 0.85) 25%,
+                    hsl(var(--background) / 0.80) 37.5%,
+                    hsl(var(--background) / 0.65) 50%,
+                    hsl(var(--background) / 0.50) 62.5%,
+                    hsl(var(--background) / 0.30) 75%,
                     transparent 87.5%,
                     transparent 100%)`,
                 }}
