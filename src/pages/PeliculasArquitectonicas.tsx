@@ -250,15 +250,21 @@ function Tints() {
 
         <Reveal delay={100} className="mt-14">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
-            <div className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]">
+            <div
+              className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]"
+              onMouseMove={(event) => {
+                const bounds = event.currentTarget.getBoundingClientRect();
+                const column = Math.min(n - 1, Math.max(0, Math.floor(((event.clientX - bounds.left) / bounds.width) * n)));
+                setHovered(column);
+              }}
+              onMouseLeave={() => setHovered(null)}
+            >
               {opts.map((o, i) => (
                 <Button
                   key={o.p}
                   type="button"
                   variant="ghost"
                   onClick={() => setSelectedTint(i)}
-                  onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(i)}
                   onBlur={() => setHovered(null)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
