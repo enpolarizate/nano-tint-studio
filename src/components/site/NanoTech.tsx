@@ -133,8 +133,6 @@ function LayerPlate({
       style={{ transformStyle: "preserve-3d" }}
     >
       <motion.div
-        onMouseEnter={() => onHover(n)}
-        onMouseLeave={() => onHover(null)}
         animate={{ y: [0, -6, 0] }}
         transition={{
           duration: 3.5,
@@ -142,6 +140,12 @@ function LayerPlate({
           ease: "easeInOut",
           delay: index * 0.35,
         }}
+        className="absolute inset-0"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+      <div
+        onMouseEnter={() => onHover(n)}
+        onMouseLeave={() => onHover(null)}
         className="absolute inset-0 cursor-pointer"
         style={{
           transform: `translateZ(${active ? z + 26 : z}px)`,
