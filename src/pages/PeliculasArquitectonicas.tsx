@@ -277,6 +277,22 @@ function Tints() {
                   </span>
                 </Button>
               ))}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background: `linear-gradient(to right,
+                    hsl(var(--background) / 0.95) 0%,
+                    hsl(var(--background) / 0.88) 12.5%,
+                    hsl(var(--background) / 0.78) 25%,
+                    hsl(var(--background) / 0.68) 37.5%,
+                    hsl(var(--background) / 0.55) 50%,
+                    hsl(var(--background) / 0.40) 62.5%,
+                    hsl(var(--background) / 0.20) 75%,
+                    transparent 87.5%,
+                    transparent 100%)`,
+                }}
+              />
             </div>
 
             <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4">
