@@ -9,7 +9,7 @@ export default function NanoTech() {
   return (
     <section
       id="tecnologia"
-      className="relative section-padding bg-surface-2 overflow-hidden"
+      className="relative section-padding overflow-hidden bg-gradient-to-b from-gold/20 via-surface-2 to-background"
     >
       <div
         aria-hidden
