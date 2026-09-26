@@ -122,6 +122,7 @@ export default function PeliculasArquitectonicas() {
       <Experience />
       <Coverage />
       <Wholesale />
+      <DomicilioPunto />
       <Distribucion />
       <Offer />
       <Faq />
