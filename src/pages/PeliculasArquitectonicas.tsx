@@ -250,7 +250,15 @@ function Tints() {
 
         <Reveal delay={100} className="mt-14">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
-            <div className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]">
+            <div
+              className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]"
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                backgroundImage: `url(${houseImg})`,
+                backgroundPosition: "center",
+                backgroundSize: "100% auto",
+              }}
+            >
               {opts.map((o, i) => (
                 <Button
                   key={o.p}
@@ -258,19 +266,17 @@ function Tints() {
                   variant="ghost"
                   onClick={() => setSelectedTint(i)}
                   onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(i)}
                   onBlur={() => setHovered(null)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
                   title={`Ver ${o.title} en imagen completa`}
-                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 transition-transform duration-300 hover:scale-y-105 hover:bg-transparent focus-visible:ring-inset"
-                  style={{
-                    backgroundImage: `url(${houseImg})`,
-                    backgroundPosition: `${(i / (n - 1)) * 100}% center`,
-                    backgroundSize: `${n * 100}% auto`,
-                  }}
+                  className="group relative z-20 h-full min-w-0 flex-1 overflow-visible rounded-none border-r border-foreground/35 p-0 transition-transform duration-300 last:border-r-0 hover:scale-y-105 hover:bg-transparent focus-visible:ring-inset"
                 >
-                  <span className={`absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 md:pb-3 md:pt-14 ${hovered === i ? "text-[var(--gold-soft)]" : "text-foreground"}`}>
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-[3px] z-20 border border-primary bg-gradient-to-b from-accent/20 via-transparent to-primary/15 opacity-0 shadow-[inset_0_0_18px_2px_hsl(var(--gold-light)/0.34),0_0_14px_1px_hsl(var(--gold)/0.28)] group-hover:opacity-100 group-focus-visible:opacity-100"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground group-hover:text-accent group-focus-visible:text-accent md:pb-3 md:pt-14">
                     <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
                     <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
                   </span>
@@ -292,34 +298,6 @@ function Tints() {
                     transparent 100%)`,
                 }}
               />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 z-10"
-                style={{
-                  backgroundImage: `repeating-linear-gradient(to right,
-                    transparent 0,
-                    transparent calc(${100 / n}% - 1px),
-                    hsl(var(--foreground) / 0.35) calc(${100 / n}% - 1px),
-                    hsl(var(--foreground) / 0.35) ${100 / n}%)`,
-                }}
-              />
-              {/* Resplandor dorado sobre el polarizado de la columna en hover */}
-              {hovered !== null && (
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute z-20"
-                  style={{
-                    left: `calc(${(hovered / n) * 100}% - 3px)`,
-                    width: `calc(${100 / n}% + 6px)`,
-                    top: "-3px",
-                    bottom: "-3px",
-                    boxShadow: "inset 0 0 0 1px var(--gold), inset 0 0 18px 2px oklch(0.82 0.14 85 / 0.28), 0 0 14px 1px oklch(0.82 0.14 85 / 0.22)",
-                    background: "linear-gradient(to bottom, oklch(0.82 0.14 85 / 0.14), transparent 30%, transparent 70%, oklch(0.82 0.14 85 / 0.10))",
-                  }}
-                >
-                  <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-70" />
-                </div>
-              )}
             </div>
 
           </div>
