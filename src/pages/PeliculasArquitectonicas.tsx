@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { applyConsentToPixel } from "@/lib/metaPixel";
 import {
   Sun, Shield, Eye, Snowflake, Sparkles, Building2, Home, Hotel,
@@ -103,14 +104,19 @@ function SupportLine({ text = "Instalación a nivel nacional", className = "" }:
 
 export default function PeliculasArquitectonicas() {
   useEffect(() => {
-    const prevTitle = document.title;
-    document.title = "ENPOLARÍZATE — Películas de seguridad y control solar premium";
     // Activa el píxel exclusivo de esta página si el visitante ya aceptó cookies
     applyConsentToPixel();
-    return () => { document.title = prevTitle; };
   }, []);
   return (
     <div className="arq-page min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Helmet>
+        <title>Películas Arquitectónicas y de Seguridad para Vidrios | ENPOLARÍZATE</title>
+        <meta name="description" content="Películas arquitectónicas y de seguridad para vidrios en Bogotá: reducen el calor, mejoran la privacidad y mantienen la luz natural en casas, oficinas y comercios." />
+        <link rel="canonical" href="https://enpolarizate.com/peliculas-arquitectonicas" />
+        <meta property="og:title" content="Películas Arquitectónicas y de Seguridad para Vidrios | ENPOLARÍZATE" />
+        <meta property="og:description" content="Reduce el calor, mejora la privacidad y mantén la luz natural con películas arquitectónicas premium. Instalación profesional en Bogotá." />
+        <meta property="og:url" content="https://enpolarizate.com/peliculas-arquitectonicas" />
+      </Helmet>
       <StickyWhatsApp />
       <AlertBar />
       <Hero />

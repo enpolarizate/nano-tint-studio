@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Shield, Lock, MessageCircle, Cookie, UserCheck, Award, FileText, HelpCircle } from "lucide-react";
 import Footer from "@/components/site/Footer";
 
@@ -127,28 +127,13 @@ const sections = [
 ];
 
 export default function PoliticaPrivacidad() {
-  useEffect(() => {
-    document.title = "Política de Privacidad — ENPOLARÍZATE";
-    const desc = "Política de privacidad, garantías y términos y condiciones de ENPOLARÍZATE.";
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", desc);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", window.location.origin + "/politica-privacidad");
-  }, []);
-
   return (
     <main className="bg-background text-foreground overflow-x-hidden min-h-screen">
+      <Helmet>
+        <title>Política de Privacidad — ENPOLARÍZATE</title>
+        <meta name="description" content="Política de privacidad, garantías y términos y condiciones de ENPOLARÍZATE." />
+        <link rel="canonical" href="https://enpolarizate.com/politica-privacidad" />
+      </Helmet>
       <div className="border-b border-border/60 bg-black/40">
         <div className="container-pro py-6 px-6 flex items-center justify-between">
           <a href="/#/" className="text-sm font-semibold text-gold-light hover:text-gold transition-colors">
