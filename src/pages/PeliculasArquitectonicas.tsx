@@ -270,10 +270,6 @@ function Tints() {
                     backgroundSize: `${n * 100}% auto`,
                   }}
                 >
-                  <span className={`absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 md:pb-3 md:pt-14 ${hovered === i ? "text-[var(--gold-soft)]" : "text-foreground"}`}>
-                    <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
-                    <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
-                  </span>
                 </Button>
               ))}
               <div
@@ -313,13 +309,24 @@ function Tints() {
                     width: `calc(${100 / n}% + 6px)`,
                     top: "-3px",
                     bottom: "-3px",
-                    boxShadow: "inset 0 0 0 1px var(--gold), inset 0 0 18px 2px oklch(0.82 0.14 85 / 0.28), 0 0 14px 1px oklch(0.82 0.14 85 / 0.22)",
-                    background: "linear-gradient(to bottom, oklch(0.82 0.14 85 / 0.14), transparent 30%, transparent 70%, oklch(0.82 0.14 85 / 0.10))",
+                    boxShadow: "inset 0 0 0 1px hsl(var(--gold)), inset 0 0 18px 2px hsl(var(--gold-light) / 0.34), 0 0 14px 1px hsl(var(--gold) / 0.28)",
+                    background: "linear-gradient(to bottom, hsl(var(--gold-light) / 0.18), transparent 30%, transparent 70%, hsl(var(--gold) / 0.14))",
                   }}
                 >
                   <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-70" />
                 </div>
               )}
+              <div aria-hidden className="pointer-events-none absolute inset-0 z-30 flex">
+                {opts.map((o, i) => (
+                  <span
+                    key={o.p}
+                    className={`relative flex min-w-0 flex-1 flex-col items-center justify-end bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 md:pb-3 md:pt-14 ${hovered === i ? "text-accent" : "text-foreground"}`}
+                  >
+                    <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
+                    <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
+                  </span>
+                ))}
+              </div>
             </div>
 
           </div>
