@@ -395,35 +395,9 @@ export default function NanoTech() {
                 ))}
               </div>
 
-              {/* Center: layers stack */}
-              <div className="relative px-4 py-6 rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)]">
-                {/* subtle breathing glow */}
-                <motion.div
-                  aria-hidden
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 50% 50%, hsl(39 70% 44% / 0.08), transparent 70%)",
-                  }}
-                  animate={{ opacity: [0.4, 0.8, 0.4] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="relative flex flex-col gap-1.5 w-[260px]">
-                  {cards.map((card, i) => (
-                    <LayerStrip
-                      key={card.n}
-                      n={card.n}
-                      visual={card.visual}
-                      active={activeLayer === card.n}
-                      onHover={setActiveLayer}
-                      index={i}
-                    />
-                  ))}
-                </div>
+              {/* Center: 3D layers stack */}
+              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden">
+                <LayerStack3D activeLayer={activeLayer} onHover={setActiveLayer} />
               </div>
 
               {/* Right cards: 4-6 */}
@@ -442,33 +416,8 @@ export default function NanoTech() {
 
             {/* ── Mobile: stacked, layers center, cards below ── */}
             <div className="md:hidden space-y-5">
-              <div className="relative px-3 py-5 rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)]">
-                <motion.div
-                  aria-hidden
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 50% 50%, hsl(39 70% 44% / 0.08), transparent 70%)",
-                  }}
-                  animate={{ opacity: [0.4, 0.8, 0.4] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="relative flex flex-col gap-1.5">
-                  {cards.map((card, i) => (
-                    <LayerStrip
-                      key={card.n}
-                      n={card.n}
-                      visual={card.visual}
-                      active={activeLayer === card.n}
-                      onHover={setActiveLayer}
-                      index={i}
-                    />
-                  ))}
-                </div>
+              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden">
+                <LayerStack3D activeLayer={activeLayer} onHover={setActiveLayer} compact />
               </div>
               <div className="grid grid-cols-1 gap-3">
                 {cards.map((card) => (
