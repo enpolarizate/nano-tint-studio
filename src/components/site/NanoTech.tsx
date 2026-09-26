@@ -1,6 +1,6 @@
 import car from "@/assets/nano-blindex-car.jpg";
 import capasHorizontal from "@/assets/nanoblindex-capas-horizontal.png";
-import capasVertical from "@/assets/nanoblindex-capas-vertical.jpg";
+import capasVertical from "@/assets/nanoblindex-capas-vertical.png";
 import { Reveal } from "./motion";
 import { WHATSAPP_URL } from "./FloatingWhatsApp";
 import { ArrowRight } from "lucide-react";
