@@ -306,20 +306,6 @@ function Tints() {
               />
             </div>
 
-            <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4">
-              {opts.map((o, i) => (
-                <Button
-                  key={o.title}
-                  type="button"
-                  variant="ghost"
-                  onClick={() => setSelectedTint(i)}
-                  className="h-auto whitespace-normal rounded-none p-3 text-left transition-colors hover:bg-accent md:p-4"
-                  aria-label={`Ampliar ${o.title}`}
-                >
-                  <p className="text-[11px] leading-snug text-muted-foreground md:text-sm">{o.desc}</p>
-                </Button>
-              ))}
-            </div>
           </div>
           <p className="mt-3 text-center text-xs text-muted-foreground">Toca una tonalidad para verla en imagen completa.</p>
         </Reveal>
