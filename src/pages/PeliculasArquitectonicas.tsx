@@ -265,15 +265,6 @@ function Tints() {
                     backgroundSize: `${n * 100}% 100%`,
                   }}
                 >
-                  <span
-                    className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-90 ${o.overlay}`}
-                    style={{
-                      WebkitMaskImage: `linear-gradient(to right, transparent, black 45%, black 55%, transparent), linear-gradient(to bottom, transparent, black 30%, black 82%, transparent)`,
-                      WebkitMaskComposite: "source-in",
-                      maskImage: `linear-gradient(to right, transparent, black 45%, black 55%, transparent), linear-gradient(to bottom, transparent, black 30%, black 82%, transparent)`,
-                      maskComposite: "intersect",
-                    }}
-                  />
                   {o.badge && (
                     <span className="absolute left-1/2 top-2 z-10 -translate-x-1/2 whitespace-normal rounded-full bg-[var(--gradient-gold)] px-2 py-0.5 text-[8px] font-bold uppercase text-[var(--ink)] md:top-3 md:px-2.5 md:text-[9px]">
                       {o.badge}
