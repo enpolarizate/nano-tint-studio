@@ -265,6 +265,7 @@ function Tints() {
                   type="button"
                   variant="ghost"
                   onClick={() => setSelectedTint(i)}
+                  onMouseEnter={() => setHovered(i)}
                   onFocus={() => setHovered(i)}
                   onBlur={() => setHovered(null)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
