@@ -9,17 +9,17 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import car from "@/assets/nano-blindex-car.jpg";
+import capasAsset from "@/assets/nanoblindex-capas.png.asset.json";
 import { Reveal } from "./motion";
 import { WHATSAPP_URL } from "./FloatingWhatsApp";
 import { motion } from "framer-motion";
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 
 type CardData = {
   n: number;
   icon: LucideIcon;
   title: string;
   desc: string;
-  visual: string;
 };
 
 const cards: CardData[] = [
@@ -28,239 +28,78 @@ const cards: CardData[] = [
     icon: Award,
     title: "DS-RESINA",
     desc: "Capa de resina de alta resistencia que brinda durabilidad y claridad al film.",
-    visual: "resina",
   },
   {
     n: 2,
     icon: Flag,
     title: "POLIÉSTER PREMIUM AMERICANO",
     desc: "Película base de poliéster de alta calidad, con gran resistencia mecánica y estabilidad dimensional.",
-    visual: "poliester",
   },
   {
     n: 3,
     icon: Atom,
     title: "NANOTECNOLOGÍA NANOCERÁMICA HD",
     desc: "Tecnología avanzada que bloquea el calor, reduce el deslumbramiento y mejora la visibilidad.",
-    visual: "nano",
   },
   {
     n: 4,
     icon: Sun,
     title: "LUBRIZOL AMERICANO POLICARBONATO PREMIUM",
     desc: "Capa de policarbonato de alta resistencia, que protege contra impactos, rayaduras y rayos UV.",
-    visual: "poli",
   },
   {
     n: 5,
     icon: ShieldCheck,
     title: "CARBONO HÍBRIDO HIGH DEFINICIÓN",
     desc: "Capa de carbono que refuerza la estructura del film y mejora la nitidez y la definición visual.",
-    visual: "carbon",
   },
   {
     n: 6,
     icon: Sparkles,
     title: "MEMBRANA ANTIRRAYA EXPECTRUM",
     desc: "Capa final de protección contra rayones, abrasión y agentes externos.",
-    visual: "membrane",
   },
 ];
 
-const layerVisuals: Record<string, CSSProperties> = {
-  resina: {
-    background:
-      "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.22), rgba(255,255,255,0.05))",
-    backdropFilter: "blur(2px)",
-  },
-  poliester: {
-    backgroundImage:
-      "radial-gradient(circle, rgba(255,255,255,0.14) 1px, transparent 1px)",
-    backgroundSize: "7px 7px",
-    backgroundColor: "rgba(255,255,255,0.03)",
-  },
-  nano: {
-    background:
-      "linear-gradient(135deg, rgba(0,85,255,0.28), rgba(0,110,255,0.42), rgba(0,85,255,0.28))",
-    boxShadow: "0 0 14px rgba(0,85,255,0.35)",
-  },
-  poli: {
-    background:
-      "linear-gradient(90deg, rgba(20,40,80,0.35), rgba(45,75,135,0.45), rgba(20,40,80,0.35))",
-  },
-  carbon: {
-    background: "linear-gradient(135deg, #2a2a2a, #080808, #2a2a2a)",
-  },
-  membrane: {
-    background: "rgba(255,255,255,0.03)",
-    boxShadow:
-      "0 0 10px hsl(39 70% 44% / 0.3), inset 0 0 6px hsl(39 70% 44% / 0.12)",
-    border: "1px solid hsl(39 70% 44% / 0.4)",
-  },
-};
-
-const layerNames: Record<number, string> = {
-  1: "DS-RESINA",
-  2: "POLIÉSTER PREMIUM",
-  3: "NANOCERÁMICA HD",
-  4: "POLICARBONATO",
-  5: "CARBONO HÍBRIDO",
-  6: "MEMBRANA ANTIRRAYA",
-};
-
-function LayerPlate({
-  n,
-  visual,
-  active,
-  onHover,
-  index,
-}: {
-  n: number;
-  visual: string;
-  active: boolean;
-  onHover: (n: number | null) => void;
-  index: number;
-}) {
-  // index 0 = top layer, 5 = bottom layer
-  const z = (5 - index) * 34;
+function LayersImage({ activeLayer }: { activeLayer: number | null }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0"
-      style={{ transformStyle: "preserve-3d" }}
-    >
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{
-          duration: 3.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: index * 0.35,
-        }}
-        className="absolute inset-0"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-      <div
-        onMouseEnter={() => onHover(n)}
-        onMouseLeave={() => onHover(null)}
-        className="absolute inset-0 cursor-pointer"
-        style={{
-          transform: `translateZ(${active ? z + 26 : z}px)`,
-          transformStyle: "preserve-3d",
-          transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
-      >
-        {/* plate face */}
-        <div
-          className="absolute inset-0 rounded-xl border transition-all duration-500"
-          style={{
-            ...layerVisuals[visual],
-            border: active
-              ? "1px solid hsl(39 70% 44% / 0.9)"
-              : "1px solid rgba(140,180,255,0.28)",
-            boxShadow: active
-              ? "0 0 26px hsl(39 70% 44% / 0.5), inset 0 0 18px hsl(39 70% 44% / 0.15)"
-              : "0 0 14px rgba(70,120,255,0.18), inset 0 0 10px rgba(140,180,255,0.08)",
-            filter: active ? "brightness(1.25)" : undefined,
-          }}
-        />
-        {/* glass sheen */}
-        <div
-          className="absolute inset-0 rounded-xl pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(120deg, rgba(255,255,255,0.16) 0%, transparent 35%, transparent 65%, rgba(255,255,255,0.07) 100%)",
-          }}
-        />
-        {/* number badge */}
-        <span
-          className={`absolute -left-2 -top-2 inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold transition-all duration-300 ${
-            active
-              ? "bg-gradient-to-br from-gold to-gold-light text-[hsl(var(--gold-foreground))] scale-110"
-              : "bg-surface-2 text-muted-foreground border border-border/60"
-          }`}
-        >
-          {n}
-        </span>
-      </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-function LayerStack3D({
-  activeLayer,
-  onHover,
-  compact = false,
-}: {
-  activeLayer: number | null;
-  onHover: (n: number | null) => void;
-  compact?: boolean;
-}) {
-  const w = compact ? 240 : 300;
-  const h = compact ? 150 : 190;
-  return (
-    <div
-      className="relative flex items-center justify-center"
-      style={{ perspective: "1100px", height: compact ? 340 : 400 }}
-    >
-      {/* breathing glow behind the stack */}
+    <div className="relative flex items-center justify-center">
+      {/* breathing glow behind the image */}
       <motion.div
         aria-hidden
         className="absolute rounded-full pointer-events-none"
         style={{
-          width: w * 1.2,
-          height: w * 1.2,
+          width: "110%",
+          height: "90%",
           background:
-            "radial-gradient(circle, hsl(39 70% 44% / 0.12), rgba(40,90,255,0.08) 45%, transparent 70%)",
-          filter: "blur(20px)",
+            "radial-gradient(circle, hsl(39 70% 44% / 0.12), rgba(40,90,255,0.10) 45%, transparent 70%)",
+          filter: "blur(24px)",
         }}
         animate={{ opacity: [0.4, 0.85, 0.4] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
-      {/* floor shadow */}
-      <div
-        aria-hidden
-        className="absolute bottom-4 rounded-full pointer-events-none"
+      <motion.img
+        src={capasAsset.url}
+        alt="Capas del film Nano Blindex Expectrum: resina, poliéster, nanocerámica, policarbonato, carbono y membrana antirraya"
+        loading="lazy"
+        className="relative w-full max-w-md h-auto"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         style={{
-          width: w * 0.9,
-          height: 26,
-          background:
-            "radial-gradient(ellipse, rgba(0,0,0,0.55), transparent 70%)",
-          filter: "blur(6px)",
+          filter: activeLayer
+            ? "drop-shadow(0 0 28px hsl(39 70% 44% / 0.45))"
+            : "drop-shadow(0 0 18px rgba(40,90,255,0.25))",
+          transition: "filter 0.5s ease",
         }}
       />
-      <div
-        className="relative"
-        style={{
-          width: w,
-          height: h,
-          transformStyle: "preserve-3d",
-          transform: "rotateX(58deg) rotateZ(-32deg)",
-        }}
-      >
-        {cards.map((card, i) => (
-          <LayerPlate
-            key={card.n}
-            n={card.n}
-            visual={card.visual}
-            active={activeLayer === card.n}
-            onHover={onHover}
-            index={i}
-          />
-        ))}
-      </div>
       {/* active layer label */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-5 pointer-events-none">
+      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-5 pointer-events-none">
         <span
           className={`text-[11px] font-bold tracking-[0.2em] uppercase transition-opacity duration-300 ${
             activeLayer ? "text-gold opacity-100" : "opacity-0"
           }`}
         >
-          {activeLayer ? layerNames[activeLayer] : ""}
+          {activeLayer ? cards[activeLayer - 1].title : ""}
         </span>
       </div>
     </div>
@@ -374,7 +213,7 @@ export default function NanoTech() {
           </div>
         </Reveal>
 
-        {/* Layers + Cards: horizontal layout, layers center, cards around */}
+        {/* Layers image + Cards: horizontal layout, image center, cards around */}
         <Reveal delay={1}>
           <div className="mt-14">
             <div className="text-center mb-8">
@@ -386,7 +225,7 @@ export default function NanoTech() {
             </div>
 
             {/* ── Desktop: 3-column horizontal ── */}
-            <div className="hidden md:grid grid-cols-[1fr_auto_1fr] gap-6 items-center max-w-5xl mx-auto">
+            <div className="hidden md:grid grid-cols-[1fr_auto_1fr] gap-6 items-center max-w-6xl mx-auto">
               {/* Left cards: 1-3 */}
               <div className="space-y-3">
                 {cards.slice(0, 3).map((card) => (
@@ -400,9 +239,9 @@ export default function NanoTech() {
                 ))}
               </div>
 
-              {/* Center: 3D layers stack */}
-              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden">
-                <LayerStack3D activeLayer={activeLayer} onHover={setActiveLayer} />
+              {/* Center: layers image */}
+              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden px-6 py-8">
+                <LayersImage activeLayer={activeLayer} />
               </div>
 
               {/* Right cards: 4-6 */}
@@ -419,10 +258,10 @@ export default function NanoTech() {
               </div>
             </div>
 
-            {/* ── Mobile: stacked, layers center, cards below ── */}
+            {/* ── Mobile: stacked, image on top, cards below ── */}
             <div className="md:hidden space-y-5">
-              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden">
-                <LayerStack3D activeLayer={activeLayer} onHover={setActiveLayer} compact />
+              <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden px-4 py-6">
+                <LayersImage activeLayer={activeLayer} />
               </div>
               <div className="grid grid-cols-1 gap-3">
                 {cards.map((card) => (
