@@ -272,13 +272,11 @@ function Tints() {
                   title={`Ver ${o.title} en imagen completa`}
                   className="group relative z-20 h-full min-w-0 flex-1 overflow-visible rounded-none border-r border-foreground/35 p-0 transition-transform duration-300 last:border-r-0 hover:scale-y-105 hover:bg-transparent focus-visible:ring-inset"
                 >
-                  {hovered === i && (
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute -inset-[3px] z-20 border border-primary bg-gradient-to-b from-accent/20 via-transparent to-primary/15 shadow-[inset_0_0_18px_2px_hsl(var(--gold-light)/0.34),0_0_14px_1px_hsl(var(--gold)/0.28)]"
-                    />
-                  )}
-                  <span className={`absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 md:pb-3 md:pt-14 ${hovered === i ? "text-accent" : "text-foreground"}`}>
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-[3px] z-20 border border-primary bg-gradient-to-b from-accent/20 via-transparent to-primary/15 opacity-0 shadow-[inset_0_0_18px_2px_hsl(var(--gold-light)/0.34),0_0_14px_1px_hsl(var(--gold)/0.28)] group-hover:opacity-100 group-focus-visible:opacity-100"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground group-hover:text-accent group-focus-visible:text-accent md:pb-3 md:pt-14">
                     <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
                     <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
                   </span>
