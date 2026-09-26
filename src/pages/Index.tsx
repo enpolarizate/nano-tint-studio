@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 import Hero from "@/components/site/Hero";
 import TintOptions from "@/components/site/TintOptions";
@@ -17,28 +17,16 @@ import Footer from "@/components/site/Footer";
 import FloatingWhatsApp from "@/components/site/FloatingWhatsApp";
 
 const Index = () => {
-  useEffect(() => {
-    document.title = "ENPOLARÍZATE — Polarizado Nano Blindex | Privacidad, UV y Seguridad";
-    const desc = "Polarizado Nano Blindex con asesoría gratuita, domicilio en Bogotá y 8 años de garantía. Privacidad, protección UV y rechazo de calor.";
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", desc);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", window.location.origin + "/");
-  }, []);
-
   return (
     <main className="bg-background text-foreground overflow-x-hidden">
+      <Helmet>
+        <title>ENPOLARÍZATE | Polarizado Nanocerámico para Carros en Bogotá</title>
+        <meta name="description" content="Polarizado nanocerámico americano para carros en Bogotá con protección UV, privacidad y seguridad. Instalación a domicilio gratis y 8 años de garantía." />
+        <link rel="canonical" href="https://enpolarizate.com/" />
+        <meta property="og:title" content="ENPOLARÍZATE | Polarizado Nanocerámico para Carros en Bogotá" />
+        <meta property="og:description" content="Polarizado nanocerámico americano con protección UV, privacidad y seguridad. Instalación a domicilio gratis en Bogotá." />
+        <meta property="og:url" content="https://enpolarizate.com/" />
+      </Helmet>
       <Hero />
       
       
