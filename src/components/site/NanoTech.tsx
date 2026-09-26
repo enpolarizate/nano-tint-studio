@@ -67,7 +67,7 @@ export default function NanoTech() {
               </h3>
             </div>
 
-            <div className="relative rounded-2xl border border-gold/20 bg-gradient-to-b from-surface-3/60 to-surface/60 shadow-[var(--shadow-card)] overflow-hidden p-4 md:p-8">
+            <div className="relative">
               {/* Desktop: horizontal */}
               <img
                 src={capasHorizontal}
