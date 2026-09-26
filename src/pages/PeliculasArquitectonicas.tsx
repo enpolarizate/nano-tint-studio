@@ -263,7 +263,7 @@ function Tints() {
                   onBlur={() => setHovered(null)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
                   title={`Ver ${o.title} en imagen completa`}
-                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 transition-transform duration-300 hover:bg-transparent focus-visible:ring-inset"
+                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 transition-transform duration-300 hover:scale-y-105 hover:bg-transparent focus-visible:ring-inset"
                   style={{
                     backgroundImage: `url(${houseImg})`,
                     backgroundPosition: `${(i / (n - 1)) * 100}% center`,
