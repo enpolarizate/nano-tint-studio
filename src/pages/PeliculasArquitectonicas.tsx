@@ -270,7 +270,7 @@ function Tints() {
                   onBlur={() => setHovered(null)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
                   title={`Ver ${o.title} en imagen completa`}
-                  className="group relative z-20 h-full min-w-0 flex-1 origin-bottom overflow-visible rounded-none border-r border-foreground/35 p-0 transition-transform duration-300 last:border-r-0 hover:scale-y-105 hover:bg-transparent focus-visible:ring-inset"
+                  className="group relative z-20 h-full min-w-0 flex-1 overflow-visible rounded-none border-r border-foreground/35 p-0 last:border-r-0 hover:bg-transparent focus-visible:ring-inset"
                 >
                   <span
                     aria-hidden
