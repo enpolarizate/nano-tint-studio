@@ -307,7 +307,7 @@ function Tints() {
               {hovered !== null && (
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute z-20 transition-all duration-300"
+                  className="pointer-events-none absolute z-20"
                   style={{
                     left: `calc(${(hovered / n) * 100}% - 3px)`,
                     width: `calc(${100 / n}% + 6px)`,
