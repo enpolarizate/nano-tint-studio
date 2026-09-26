@@ -226,8 +226,8 @@ function Tints() {
     { p: "15%", title: "Alta privacidad", desc: "Privacidad alta con luz tenue.", overlay: "bg-background/85" },
     { p: "20%", title: "Privacidad alta", desc: "Ideal para dormitorios y espacios íntimos.", overlay: "bg-background/80" },
     { p: "35%", title: "El más oscuro", desc: "Privacidad y protección balanceadas, poca visibilidad desde afuera.", overlay: "bg-background/65" },
-    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/50", badge: "Más elegida" },
-    { p: "70%", title: "El más claro", desc: "Mantiene el espacio iluminado con protección UV y seguridad.", overlay: "bg-background/30" },
+    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/58", badge: "Más elegida" },
+    { p: "70%", title: "El más claro", desc: "Mantiene el espacio iluminado con protección UV y seguridad.", overlay: "bg-background/42" },
     { p: "No Tint", title: "Sin película", desc: "Máxima luz, sin privacidad ni protección. Referencia.", overlay: "bg-transparent" },
   ];
   const n = opts.length;
@@ -287,8 +287,8 @@ function Tints() {
                     hsl(var(--background) / 0.85) 25%,
                     hsl(var(--background) / 0.80) 37.5%,
                     hsl(var(--background) / 0.65) 50%,
-                    hsl(var(--background) / 0.50) 62.5%,
-                    hsl(var(--background) / 0.30) 75%,
+                    hsl(var(--background) / 0.58) 62.5%,
+                    hsl(var(--background) / 0.42) 75%,
                     transparent 87.5%,
                     transparent 100%)`,
                 }}
