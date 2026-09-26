@@ -314,7 +314,7 @@ function Tints() {
                 alt={`Fachada con película arquitectónica en tonalidad ${activeTint.p}`}
                 className="h-full w-full object-cover"
               />
-              <div className={`absolute inset-0 ${activeTint.p === "Black out" ? "bg-background/95" : activeTint.p === "50%" ? "bg-background/62" : activeTint.p === "70%" ? "bg-background/46" : activeTint.overlay}`} />
+              <div className={`absolute inset-0 ${activeTint.p === "Black out" ? "bg-background/95" : activeTint.p === "50%" ? "bg-background/72" : activeTint.p === "70%" ? "bg-background/58" : activeTint.overlay}`} />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 to-transparent px-5 pb-6 pt-20 text-foreground md:px-8 md:pb-8">
                 <p className="text-3xl font-extrabold md:text-5xl">{activeTint.p}</p>
                 <p className="mt-1 text-lg font-bold md:text-2xl">{activeTint.title}</p>
