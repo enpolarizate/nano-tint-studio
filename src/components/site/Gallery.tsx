@@ -1,17 +1,17 @@
 import { Reveal } from "./motion";
 
-import corvette from "@/assets/gallery/car-corvette.jpg.asset.json";
-import maserati from "@/assets/gallery/car-maserati.jpg.asset.json";
-import jaguar from "@/assets/gallery/car-jaguar.jpg.asset.json";
-import jetour from "@/assets/gallery/car-jetour.jpg.asset.json";
-import byd from "@/assets/gallery/car-byd.jpg.asset.json";
+import corvette from "@/assets/gallery/car-corvette.jpg";
+import maserati from "@/assets/gallery/car-maserati.jpg";
+import jaguar from "@/assets/gallery/car-jaguar.jpg";
+import jetour from "@/assets/gallery/car-jetour.jpg";
+import byd from "@/assets/gallery/car-byd.jpg";
 
 const images = [
-  { src: corvette.url, label: "Chevrolet Corvette", tint: "Nano Blindex 5%" },
-  { src: maserati.url, label: "Maserati Ghibli", tint: "Nano Blindex 20%" },
-  { src: jaguar.url, label: "Jaguar F-Pace", tint: "Nano Blindex 20%" },
-  { src: jetour.url, label: "Jetour SUV", tint: "Nano Blindex 15%" },
-  { src: byd.url, label: "BYD Yuan Plus", tint: "Nano Blindex 20%" },
+  { src: corvette, label: "Chevrolet Corvette", tint: "Nano Blindex 5%" },
+  { src: maserati, label: "Maserati Ghibli", tint: "Nano Blindex 20%" },
+  { src: jaguar, label: "Jaguar F-Pace", tint: "Nano Blindex 20%" },
+  { src: jetour, label: "Jetour SUV", tint: "Nano Blindex 15%" },
+  { src: byd, label: "BYD Yuan Plus", tint: "Nano Blindex 20%" },
 ];
 
 export default function Gallery() {
