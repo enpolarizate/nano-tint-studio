@@ -34,6 +34,7 @@ import expApartamento from "@/assets/tech/apartamento.jpg";
 import expOficina from "@/assets/tech/oficina.jpg";
 import expLocal from "@/assets/tech/local.jpg";
 import expEdificio from "@/assets/tech/edificio.jpg";
+import puntoInstalacionImg from "@/assets/punto-instalacion.jpg";
 import expHotel from "@/assets/tech/hotel.jpg";
 import expConsultorio from "@/assets/tech/consultorio.jpg";
 import expFachada from "@/assets/tech/fachada.jpg";
