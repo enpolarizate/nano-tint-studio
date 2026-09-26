@@ -258,14 +258,13 @@ function Tints() {
                   onClick={() => setSelectedTint(i)}
                   aria-label={`Ver tonalidad ${o.p}: ${o.title}`}
                   title={`Ver ${o.title} en imagen completa`}
-                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none border-r border-primary-foreground/60 p-0 last:border-r-0 hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
+                  className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none p-0 hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
                   style={{
                     backgroundImage: `url(${houseImg})`,
                     backgroundPosition: `${(i / (n - 1)) * 100}% center`,
                     backgroundSize: `${n * 100}% 100%`,
                   }}
                 >
-                  <span className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-90 ${o.overlay}`} />
                   {o.badge && (
                     <span className="absolute left-1/2 top-2 z-10 -translate-x-1/2 whitespace-normal rounded-full bg-[var(--gradient-gold)] px-2 py-0.5 text-[8px] font-bold uppercase text-[var(--ink)] md:top-3 md:px-2.5 md:text-[9px]">
                       {o.badge}
@@ -278,6 +277,22 @@ function Tints() {
                   </span>
                 </Button>
               ))}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background: `linear-gradient(to right,
+                    hsl(var(--background) / 0.95) 0%,
+                    hsl(var(--background) / 0.88) 12.5%,
+                    hsl(var(--background) / 0.78) 25%,
+                    hsl(var(--background) / 0.68) 37.5%,
+                    hsl(var(--background) / 0.55) 50%,
+                    hsl(var(--background) / 0.40) 62.5%,
+                    hsl(var(--background) / 0.20) 75%,
+                    transparent 87.5%,
+                    transparent 100%)`,
+                }}
+              />
             </div>
 
             <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4">
