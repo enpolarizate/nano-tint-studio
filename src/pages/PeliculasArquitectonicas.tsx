@@ -311,6 +311,17 @@ function Tints() {
                     hsl(var(--foreground) / 0.35) ${100 / n}%)`,
                 }}
               />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute z-20 hidden md:flex h-12 w-12 items-center justify-center rounded-full border-2 border-[var(--gold)] bg-[var(--gold)]/15 text-[var(--gold)] transition-opacity duration-150 animate-pulse"
+                style={{
+                  left: cursorPos.x - 24,
+                  top: cursorPos.y - 24,
+                  opacity: cursorActive ? 1 : 0,
+                }}
+              >
+                <Maximize2 className="h-5 w-5" strokeWidth={2.5} />
+              </div>
             </div>
 
           </div>
