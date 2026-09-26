@@ -275,15 +275,16 @@ function Tints() {
 
             <div className="grid divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
               {opts.map((o, i) => (
-                <button
+                <Button
                   key={o.title}
                   type="button"
+                  variant="ghost"
                   onClick={() => setSelectedTint(i)}
-                  className="p-4 text-left transition-colors hover:bg-accent md:p-5"
+                  className="h-auto whitespace-normal rounded-none p-4 text-left transition-colors hover:bg-accent md:p-5"
                   aria-label={`Ampliar ${o.title}`}
                 >
                   <p className="text-sm text-muted-foreground">{o.desc}</p>
-                </button>
+                </Button>
               ))}
             </div>
           </div>
