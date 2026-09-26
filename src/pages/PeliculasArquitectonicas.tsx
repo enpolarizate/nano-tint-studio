@@ -293,6 +293,17 @@ function Tints() {
                     transparent 100%)`,
                 }}
               />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(to right,
+                    transparent 0,
+                    transparent calc(${100 / n}% - 1px),
+                    hsl(var(--foreground) / 0.35) calc(${100 / n}% - 1px),
+                    hsl(var(--foreground) / 0.35) ${100 / n}%)`,
+                }}
+              />
             </div>
 
             <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4">
