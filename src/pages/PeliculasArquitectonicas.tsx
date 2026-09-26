@@ -14,6 +14,7 @@ import logo from "@/assets/arquitectonico/logo.png";
 import heroImg from "@/assets/arquitectonico/hero.jpg";
 import installImg from "@/assets/arquitectonico/install.jpg";
 import buildingImg from "@/assets/arquitectonico/building.jpg";
+import houseImg from "@/assets/arquitectonico/house.jpg";
 import techViews from "@/assets/tech/views.jpg";
 import techEnergy from "@/assets/tech/energy.jpg";
 import techPrivacy from "@/assets/tech/privacy.jpg";
@@ -220,10 +221,16 @@ function Hero() {
 /* ---------------- 3. Tints ---------------- */
 function Tints() {
   const opts = [
-    { p: "35%", title: "El más oscuro", desc: "Ideal si quieres privacidad, mínima visibilidad desde afuera.", overlay: "bg-background/75" },
-    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/45", badge: "Más elegida" },
-    { p: "70%", title: "El más claro", desc: "Mantiene el espacio muy iluminado. Ideal para máxima seguridad sin perder luz.", overlay: "bg-background/15" },
+    { p: "Black out", title: "Black out", desc: "Privacidad total. Cero visibilidad desde afuera y bloqueo completo de la luz.", overlay: "bg-background/95" },
+    { p: "5%", title: "Máxima privacidad", desc: "Muy poca luz entra. Privacidad casi total.", overlay: "bg-background/88" },
+    { p: "15%", title: "Alta privacidad", desc: "Privacidad alta con luz tenue.", overlay: "bg-background/78" },
+    { p: "20%", title: "Privacidad alta", desc: "Ideal para dormitorios y espacios íntimos.", overlay: "bg-background/68" },
+    { p: "35%", title: "El más oscuro", desc: "Privacidad y protección balanceadas, poca visibilidad desde afuera.", overlay: "bg-background/55" },
+    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/40", badge: "Más elegida" },
+    { p: "70%", title: "El más claro", desc: "Mantiene el espacio iluminado con protección UV y seguridad.", overlay: "bg-background/20" },
+    { p: "No Tint", title: "Sin película", desc: "Máxima luz, sin privacidad ni protección. Referencia.", overlay: "bg-transparent" },
   ];
+  const n = opts.length;
   const [selectedTint, setSelectedTint] = useState<number | null>(null);
   const activeTint = opts[selectedTint ?? 0];
 
@@ -242,7 +249,7 @@ function Tints() {
 
         <Reveal delay={100} className="mt-14">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
-            <div className="relative flex aspect-[4/3] w-full overflow-hidden md:aspect-[16/7]">
+            <div className="relative flex aspect-[16/9] w-full overflow-hidden md:aspect-[16/6]">
               {opts.map((o, i) => (
                 <Button
                   key={o.p}
@@ -253,37 +260,37 @@ function Tints() {
                   title={`Ver ${o.title} en imagen completa`}
                   className="group relative h-full min-w-0 flex-1 overflow-hidden rounded-none border-r border-primary-foreground/60 p-0 last:border-r-0 hover:bg-transparent focus-visible:z-20 focus-visible:ring-inset"
                   style={{
-                    backgroundImage: `url(${buildingImg})`,
-                    backgroundPosition: `${i * 50}% center`,
-                    backgroundSize: "300% 100%",
+                    backgroundImage: `url(${houseImg})`,
+                    backgroundPosition: `${(i / (n - 1)) * 100}% center`,
+                    backgroundSize: `${n * 100}% 100%`,
                   }}
                 >
                   <span className={`absolute inset-0 transition-opacity duration-300 group-hover:opacity-90 ${o.overlay}`} />
                   {o.badge && (
-                    <span className="absolute left-1/2 top-3 z-10 -translate-x-1/2 whitespace-normal rounded-full bg-[var(--gradient-gold)] px-2 py-1 text-[9px] font-bold uppercase text-[var(--ink)] md:top-5 md:px-3 md:text-[10px]">
+                    <span className="absolute left-1/2 top-2 z-10 -translate-x-1/2 whitespace-normal rounded-full bg-[var(--gradient-gold)] px-2 py-0.5 text-[8px] font-bold uppercase text-[var(--ink)] md:top-3 md:px-2.5 md:text-[9px]">
                       {o.badge}
                     </span>
                   )}
-                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-2 pb-4 pt-16 text-foreground md:pb-6">
-                    <span className="text-2xl font-extrabold md:text-5xl">{o.p}</span>
-                    <span className="mt-1 whitespace-normal text-center text-[10px] font-bold uppercase md:text-sm">{o.title}</span>
-                    <Maximize2 className="mt-2 h-4 w-4 opacity-80" />
+                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-1 pb-2 pt-10 text-foreground md:pb-3 md:pt-14">
+                    <span className="text-sm font-extrabold leading-none md:text-2xl">{o.p}</span>
+                    <span className="mt-0.5 hidden whitespace-normal text-center text-[8px] font-bold uppercase md:block md:text-[10px]">{o.title}</span>
+                    <Maximize2 className="mt-1 hidden h-3 w-3 opacity-80 md:block" />
                   </span>
                 </Button>
               ))}
             </div>
 
-            <div className="grid divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
+            <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4">
               {opts.map((o, i) => (
                 <Button
                   key={o.title}
                   type="button"
                   variant="ghost"
                   onClick={() => setSelectedTint(i)}
-                  className="h-auto whitespace-normal rounded-none p-4 text-left transition-colors hover:bg-accent md:p-5"
+                  className="h-auto whitespace-normal rounded-none p-3 text-left transition-colors hover:bg-accent md:p-4"
                   aria-label={`Ampliar ${o.title}`}
                 >
-                  <p className="text-sm text-muted-foreground">{o.desc}</p>
+                  <p className="text-[11px] leading-snug text-muted-foreground md:text-sm">{o.desc}</p>
                 </Button>
               ))}
             </div>
@@ -297,7 +304,7 @@ function Tints() {
             <DialogDescription className="sr-only">Vista completa de la fachada con la tonalidad seleccionada.</DialogDescription>
             <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-video">
               <img
-                src={buildingImg}
+                src={houseImg}
                 alt={`Fachada con película arquitectónica en tonalidad ${activeTint.p}`}
                 className="h-full w-full object-cover"
               />
