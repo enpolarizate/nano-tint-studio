@@ -108,7 +108,7 @@ const layerNames: Record<number, string> = {
   6: "MEMBRANA ANTIRRAYA",
 };
 
-function LayerStrip({
+function LayerPlate({
   n,
   visual,
   active,
@@ -121,56 +121,144 @@ function LayerStrip({
   onHover: (n: number | null) => void;
   index: number;
 }) {
+  // index 0 = top layer, 5 = bottom layer
+  const z = (5 - index) * 34;
   return (
     <motion.div
-      initial={{ opacity: 0, scaleX: 0.6 }}
-      whileInView={{ opacity: 1, scaleX: 1 }}
+      initial={{ opacity: 0, y: -60 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      onMouseEnter={() => onHover(n)}
-      onMouseLeave={() => onHover(null)}
-      className={`relative flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-500 cursor-pointer ${
-        active ? "bg-gold/10 scale-[1.03] z-10" : "bg-surface-3/40"
-      }`}
+      transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className="absolute inset-0"
+      style={{ transformStyle: "preserve-3d" }}
     >
-      {/* glow on hover */}
-      <div
-        className={`absolute inset-0 rounded-lg transition-opacity duration-500 ${
-          active ? "opacity-100" : "opacity-0"
-        } pointer-events-none`}
-        style={{
-          boxShadow: "0 0 20px hsl(39 70% 44% / 0.25)",
+      <motion.div
+        onMouseEnter={() => onHover(n)}
+        onMouseLeave={() => onHover(null)}
+        animate={{ y: [0, -6, 0] }}
+        transition={{
+          duration: 3.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: index * 0.35,
         }}
-      />
-      {/* number badge */}
-      <span
-        className={`relative flex-shrink-0 inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold transition-all duration-300 ${
-          active
-            ? "bg-gradient-to-br from-gold to-gold-light text-[hsl(var(--gold-foreground))]"
-            : "bg-surface-2 text-muted-foreground"
-        }`}
-      >
-        {n}
-      </span>
-      {/* layer bar */}
-      <div
-        className="relative flex-1 h-7 rounded-md transition-all duration-500"
+        className="absolute inset-0 cursor-pointer"
         style={{
-          ...layerVisuals[visual],
-          ...(active
-            ? { transform: "scaleY(1.15)", filter: "brightness(1.2)" }
-            : {}),
+          transform: `translateZ(${active ? z + 26 : z}px)`,
+          transformStyle: "preserve-3d",
+          transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
-      />
-      {/* layer name */}
-      <span
-        className={`relative flex-shrink-0 text-[11px] font-semibold tracking-wide transition-colors duration-300 ${
-          active ? "text-gold" : "text-muted-foreground"
-        }`}
       >
-        {layerNames[n]}
-      </span>
+        {/* plate face */}
+        <div
+          className="absolute inset-0 rounded-xl border transition-all duration-500"
+          style={{
+            ...layerVisuals[visual],
+            border: active
+              ? "1px solid hsl(39 70% 44% / 0.9)"
+              : "1px solid rgba(140,180,255,0.28)",
+            boxShadow: active
+              ? "0 0 26px hsl(39 70% 44% / 0.5), inset 0 0 18px hsl(39 70% 44% / 0.15)"
+              : "0 0 14px rgba(70,120,255,0.18), inset 0 0 10px rgba(140,180,255,0.08)",
+            filter: active ? "brightness(1.25)" : undefined,
+          }}
+        />
+        {/* glass sheen */}
+        <div
+          className="absolute inset-0 rounded-xl pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(120deg, rgba(255,255,255,0.16) 0%, transparent 35%, transparent 65%, rgba(255,255,255,0.07) 100%)",
+          }}
+        />
+        {/* number badge */}
+        <span
+          className={`absolute -left-2 -top-2 inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold transition-all duration-300 ${
+            active
+              ? "bg-gradient-to-br from-gold to-gold-light text-[hsl(var(--gold-foreground))] scale-110"
+              : "bg-surface-2 text-muted-foreground border border-border/60"
+          }`}
+        >
+          {n}
+        </span>
+      </motion.div>
     </motion.div>
+  );
+}
+
+function LayerStack3D({
+  activeLayer,
+  onHover,
+  compact = false,
+}: {
+  activeLayer: number | null;
+  onHover: (n: number | null) => void;
+  compact?: boolean;
+}) {
+  const w = compact ? 240 : 300;
+  const h = compact ? 150 : 190;
+  return (
+    <div
+      className="relative flex items-center justify-center"
+      style={{ perspective: "1100px", height: compact ? 340 : 400 }}
+    >
+      {/* breathing glow behind the stack */}
+      <motion.div
+        aria-hidden
+        className="absolute rounded-full pointer-events-none"
+        style={{
+          width: w * 1.2,
+          height: w * 1.2,
+          background:
+            "radial-gradient(circle, hsl(39 70% 44% / 0.12), rgba(40,90,255,0.08) 45%, transparent 70%)",
+          filter: "blur(20px)",
+        }}
+        animate={{ opacity: [0.4, 0.85, 0.4] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+      {/* floor shadow */}
+      <div
+        aria-hidden
+        className="absolute bottom-4 rounded-full pointer-events-none"
+        style={{
+          width: w * 0.9,
+          height: 26,
+          background:
+            "radial-gradient(ellipse, rgba(0,0,0,0.55), transparent 70%)",
+          filter: "blur(6px)",
+        }}
+      />
+      <div
+        className="relative"
+        style={{
+          width: w,
+          height: h,
+          transformStyle: "preserve-3d",
+          transform: "rotateX(58deg) rotateZ(-32deg)",
+        }}
+      >
+        {cards.map((card, i) => (
+          <LayerPlate
+            key={card.n}
+            n={card.n}
+            visual={card.visual}
+            active={activeLayer === card.n}
+            onHover={onHover}
+            index={i}
+          />
+        ))}
+      </div>
+      {/* active layer label */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-5 pointer-events-none">
+        <span
+          className={`text-[11px] font-bold tracking-[0.2em] uppercase transition-opacity duration-300 ${
+            activeLayer ? "text-gold opacity-100" : "opacity-0"
+          }`}
+        >
+          {activeLayer ? layerNames[activeLayer] : ""}
+        </span>
+      </div>
+    </div>
   );
 }
 
