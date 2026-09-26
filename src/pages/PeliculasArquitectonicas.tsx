@@ -313,11 +313,11 @@ function Tints() {
                     width: `calc(${100 / n}% + 6px)`,
                     top: "-3px",
                     bottom: "-3px",
-                    boxShadow: "inset 0 0 0 2px var(--gold), inset 0 0 28px 3px oklch(0.82 0.14 85 / 0.45), 0 0 22px 2px oklch(0.82 0.14 85 / 0.4)",
-                    background: "linear-gradient(to bottom, oklch(0.82 0.14 85 / 0.22), transparent 30%, transparent 70%, oklch(0.82 0.14 85 / 0.18))",
+                    boxShadow: "inset 0 0 0 1px var(--gold), inset 0 0 18px 2px oklch(0.82 0.14 85 / 0.28), 0 0 14px 1px oklch(0.82 0.14 85 / 0.22)",
+                    background: "linear-gradient(to bottom, oklch(0.82 0.14 85 / 0.14), transparent 30%, transparent 70%, oklch(0.82 0.14 85 / 0.10))",
                   }}
                 >
-                  <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent" />
+                  <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-70" />
                 </div>
               )}
             </div>
