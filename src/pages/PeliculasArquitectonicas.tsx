@@ -220,9 +220,9 @@ function Hero() {
 /* ---------------- 3. Tints ---------------- */
 function Tints() {
   const opts = [
-    { p: "35%", title: "El más oscuro", desc: "Ideal si quieres privacidad, mínima visibilidad desde afuera.", overlay: "bg-foreground/60" },
-    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-foreground/35", badge: "Más elegida" },
-    { p: "70%", title: "El más claro", desc: "Mantiene el espacio muy iluminado. Ideal para máxima seguridad sin perder luz.", overlay: "bg-foreground/10" },
+    { p: "35%", title: "El más oscuro", desc: "Ideal si quieres privacidad, mínima visibilidad desde afuera.", overlay: "bg-background/75" },
+    { p: "50%", title: "Equilibrio perfecto", desc: "Entre visibilidad y protección. (La más elegida)", overlay: "bg-background/45", badge: "Más elegida" },
+    { p: "70%", title: "El más claro", desc: "Mantiene el espacio muy iluminado. Ideal para máxima seguridad sin perder luz.", overlay: "bg-background/15" },
   ];
   const [selectedTint, setSelectedTint] = useState<number | null>(null);
   const activeTint = opts[selectedTint ?? 0];
@@ -264,7 +264,7 @@ function Tints() {
                       {o.badge}
                     </span>
                   )}
-                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-foreground/90 to-transparent px-2 pb-4 pt-16 text-primary-foreground md:pb-6">
+                  <span className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center bg-gradient-to-t from-background/95 to-transparent px-2 pb-4 pt-16 text-foreground md:pb-6">
                     <span className="text-2xl font-extrabold md:text-5xl">{o.p}</span>
                     <span className="mt-1 whitespace-normal text-center text-[10px] font-bold uppercase md:text-sm">{o.title}</span>
                     <Maximize2 className="mt-2 h-4 w-4 opacity-80" />
@@ -302,7 +302,7 @@ function Tints() {
                 className="h-full w-full object-cover"
               />
               <div className={`absolute inset-0 ${activeTint.overlay}`} />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/95 to-transparent px-5 pb-6 pt-20 text-primary-foreground md:px-8 md:pb-8">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 to-transparent px-5 pb-6 pt-20 text-foreground md:px-8 md:pb-8">
                 <p className="text-3xl font-extrabold md:text-5xl">{activeTint.p}</p>
                 <p className="mt-1 text-lg font-bold md:text-2xl">{activeTint.title}</p>
                 <p className="mt-2 max-w-2xl text-sm opacity-85 md:text-base">{activeTint.desc}</p>
