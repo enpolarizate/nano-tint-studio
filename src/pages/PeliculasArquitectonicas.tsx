@@ -6,7 +6,7 @@ import {
   Briefcase, Store, Stethoscope, Layers, CheckCircle2, ChevronDown,
   MessageCircle, Award, Ruler, FileText,
   CalendarCheck, ShieldCheck, Zap, Palette, MonitorSmartphone, PaintBucket,
-  Droplets, CloudRain, Wind, Users, Quote, MapPin, Maximize2,
+  Droplets, CloudRain, Wind, Users, Quote, MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
